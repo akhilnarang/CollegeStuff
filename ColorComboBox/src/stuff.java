@@ -4,6 +4,15 @@
  * and open the template in the editor.
  */
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author akhilnarang
@@ -15,6 +24,15 @@ public class stuff extends javax.swing.JFrame {
      */
     public stuff() {
         initComponents();
+        buttonbox.addActionListener((ActionEvent a) -> {
+            doStuff(button);
+        });
+        labelbox.addActionListener((ActionEvent a) -> {
+            doStuff(label);
+        });
+        textfieldbox.addActionListener((ActionEvent a) -> {
+            doStuff(textfield);
+        });
     }
 
     /**
@@ -46,11 +64,6 @@ public class stuff extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        list.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                listPropertyChange(evt);
-            }
-        });
         list.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 listValueChanged(evt);
@@ -59,25 +72,10 @@ public class stuff extends javax.swing.JFrame {
         jScrollPane1.setViewportView(list);
 
         labelbox.setText("Apply On Label");
-        labelbox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                labelboxActionPerformed(evt);
-            }
-        });
 
         buttonbox.setText("Apply On Button");
-        buttonbox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonboxActionPerformed(evt);
-            }
-        });
 
         textfieldbox.setText("Apply On TextField");
-        textfieldbox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textfieldboxActionPerformed(evt);
-            }
-        });
 
         jLabel2.setText("Affected Controls:");
 
@@ -105,11 +103,11 @@ public class stuff extends javax.swing.JFrame {
                                 .addComponent(textfieldbox))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(150, 150, 150)
+                                .addGap(219, 219, 219)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(textfield)
-                                    .addComponent(label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(label, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addContainerGap(32, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -144,70 +142,23 @@ public class stuff extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void listPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_listPropertyChange
-
-    }//GEN-LAST:event_listPropertyChange
-
     private void listValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listValueChanged
-        if (buttonbox.isSelected())
-        {
-            button.setBackground(getColor());
-        }
-        else
-        {
-            button.setBackground(new javax.swing.JButton().getBackground());
-        }
-        if (labelbox.isSelected())
-        {
-            label.setBackground(getColor());
-        }
-        else
-        {
-            label.setBackground(new javax.swing.JLabel().getBackground());
-        }
-        if (textfieldbox.isSelected())
-        {
-            textfield.setBackground(getColor());
-        }
-        else
-        {
-            textfield.setBackground(new javax.swing.JTextField().getBackground());
-        }
+        doStuff(label);
+        doStuff(button);
+        doStuff(textfield);
     }//GEN-LAST:event_listValueChanged
-
-    private void labelboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_labelboxActionPerformed
-      if (labelbox.isSelected())
-        {
-            label.setBackground(getColor());
-        }
-        else
-        {
-            label.setBackground(new javax.swing.JLabel().getBackground());
-        }
-    }//GEN-LAST:event_labelboxActionPerformed
-
-    private void buttonboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonboxActionPerformed
-        if (buttonbox.isSelected())
-        {
-            button.setBackground(getColor());
-        }
-        else
-        {
-            button.setBackground(new javax.swing.JButton().getBackground());
-        }
-    }//GEN-LAST:event_buttonboxActionPerformed
-
-    private void textfieldboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textfieldboxActionPerformed
-        if (textfieldbox.isSelected())
-        {
-            textfield.setBackground(getColor());
-        }
-        else
-        {
-            textfield.setBackground(new javax.swing.JTextField().getBackground());
-        }
-    }//GEN-LAST:event_textfieldboxActionPerformed
     
+    void doStuff(JLabel label) {
+        label.setBackground(labelbox.isSelected() ? getColor() : new javax.swing.JLabel().getBackground());
+    }
+    
+    void doStuff(JButton button) {
+        button.setBackground(buttonbox.isSelected() ? getColor() : new javax.swing.JButton().getBackground());
+    }
+    
+    void doStuff(JTextField textfield) {
+        textfield.setBackground(textfieldbox.isSelected() ? getColor() : new javax.swing.JTextField().getBackground());
+    }
     private Color getColor()
     {
         int n=list.getSelectedIndex();
