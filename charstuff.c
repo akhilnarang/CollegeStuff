@@ -1,9 +1,11 @@
 #include <stdio.h>
 
 int main() {
-    printf("Enter a character: ");
-    char c = getchar();
-    printf ("The inputted character is: ");
-    putchar(c);
-    printf("\n");
+    printf("Enter stuff: ");
+    char c;
+    while ( (c=getchar()) != EOF ) {
+        printf ("The inputted character is: ");
+        putchar(c);
+        printf ("\n");
+    }
 }
