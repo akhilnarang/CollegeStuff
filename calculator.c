@@ -2,7 +2,7 @@
 
 /** 
  * Menu driven C program for a simple arithmetic calculator
-*/
+ */
 
 main() {
     // Declaration of variables

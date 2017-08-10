@@ -2,7 +2,7 @@
 
 /**
  * Program to check whether given input is a vowel or a consonant
-*/
+ */
 
 main() {
     // Declaration of variables
