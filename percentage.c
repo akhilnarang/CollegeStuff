@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-/** 
+/**
  * Program to display total marks and percentage and grade
  */
 

@@ -17,7 +17,7 @@ main() {
     } else {
         n=c;
     }
-    
+
     // Check for an invalid input
     if ((int)n<65 || (int)n>90) {
         printf("\nA letter please, not other characters!\n");

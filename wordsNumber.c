@@ -22,7 +22,7 @@ main() {
             case 6: printf("Six "); break;
             case 7: printf("Seven "); break;
             case 8: printf("Eight "); break;
-            case 9: printf("Nine "); break;    
+            case 9: printf("Nine "); break;
         }
     }
     printf("\n");

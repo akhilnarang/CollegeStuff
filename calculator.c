@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-/** 
+/**
  * Menu driven C program for a simple arithmetic calculator
  */
 
