@@ -21,5 +21,5 @@ main() {
     printf("Sum of %d and %d is %d\n", num1, num2, sum);
     printf("Difference between %d and %d is %d\n", num1, num2, difference);
     printf("Product of %d and %d is %d\n", num1, num2, product);
-    printf("Quotient of %d and %d is %d\n", num1, num2, quotient);    
+    printf("Quotient of %d and %d is %d\n", num1, num2, quotient);
 }

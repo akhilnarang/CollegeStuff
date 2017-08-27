@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-/** 
+/**
   * Menu driven program to perform various string operations
   */
 main() {
@@ -70,4 +70,4 @@ main() {
         scanf("%d", &c);
     }
     printf("\n");
-}                            
+}
