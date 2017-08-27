@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+for f in $(drive list | grep "\.c" | awk '{print $1"-"$2}')
+do
+    id=$(echo $f | cut -d- -f1)
+    name=$(echo $f | cut -d- -f2)
+    echo -e "Downloading $name"
+    drive download  $id --force
+    echo -e "Deleting $name from drive"
+    drive delete $id
+done
+
+git add -A
+git commit -asm "$(date) automated update of cstuff"
+git push origin master -u
+
