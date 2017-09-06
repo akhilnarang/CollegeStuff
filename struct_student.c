@@ -3,7 +3,7 @@
 /**
   * Program to accept details of student in a structure and display result
   */
-  
+
 main()
 {
     // Declaring struct
@@ -15,7 +15,7 @@ main()
         float bm;
         float im;
     };
-    
+
     int i,n;
     // Prompting user
     printf("\nEnter number of students: ");
@@ -37,7 +37,7 @@ main()
         printf("Enter IEPD Marks: ");
         scanf("%f", &s[i].im);
     }
-    
+
     // Printing details of the student
     for (i=0;i<n;i++) {
         printf("\nStudent Number %d.\n", i+1);

@@ -3,7 +3,7 @@
 /**
   * Program to calculate power of a number calling a function recursively
   */
- 
+
 int power(int n, int p) {
     if (p==1) {
         return 1;
@@ -22,5 +22,5 @@ main() {
         printf("\nPlease follow instructions!\n");
     } else {
         printf("\n%d^%d is %d!\n", n, p, power(n,p));
-    }       
+    }
 }
