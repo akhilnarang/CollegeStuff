@@ -4,7 +4,7 @@
   * Program to take in elements of a matrix in a DDA and display the product
   */
 
-main() {
+void main(){
 
     int ra, ca, rb, cb;
     printf("Enter the number of rows of a: ");

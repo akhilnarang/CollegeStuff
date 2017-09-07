@@ -4,7 +4,7 @@
   * Program to accept details of student in a structure and display result
   */
 
-main()
+void main()
 {
     // Declaring struct
     struct student {

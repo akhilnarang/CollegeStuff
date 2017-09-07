@@ -12,7 +12,7 @@ int power(int n, int p) {
     }
 }
 
-main() {
+void main(){
     int n, p;
     printf("\nEnter a positive integer n: ");
     scanf("%d", &n);

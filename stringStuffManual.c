@@ -3,7 +3,9 @@
 /**
   * Menu driven program to perform various string operations
   */
-main() {
+
+void main()
+{
     // Declaring the variables
     char s1[20], s2[20];
     int c, i, j, k;

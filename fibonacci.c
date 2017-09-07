@@ -4,7 +4,8 @@
  * Program to display fibonaci series upto a user provided limit
  */
 
- main() {
+void main()
+{
     printf("\nEnter the limit you want for fibonacci series(at least 3): ");
     int i=3;
     int n;

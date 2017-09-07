@@ -4,7 +4,7 @@
  * Program to print the factors of a number
  */
 
-main() {
+void main(){
     printf("Enter a number(greater than 2): ");
     int n,i;
     scanf("%d", &n);

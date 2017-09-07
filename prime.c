@@ -4,7 +4,7 @@
  * Program to check and display whether given number is a prime number or not
  */
 
-main() {
+void main(){
     printf("Enter a number: ");
     int n,c=0,i;
     scanf("%d", &n);

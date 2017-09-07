@@ -25,7 +25,7 @@ int divide(int a, int b) {
     return a/b;
 }
 
-main() {
+void main(){
     // Prompting the user for input
     printf("\nEnter 2 integers!\n");
     int a, b;

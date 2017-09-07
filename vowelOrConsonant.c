@@ -4,7 +4,7 @@
  * Program to check whether given input is a vowel or a consonant
  */
 
-main() {
+void main(){
     // Declaration of variables
     char c, n;
     // Prompting users to input

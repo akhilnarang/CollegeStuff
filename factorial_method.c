@@ -12,7 +12,7 @@ int factorial(int n) {
     }
 }
 
-main() {
+void main(){
     printf("\nEnter a positive integer n: ");
     int n;
     scanf("%d", &n);

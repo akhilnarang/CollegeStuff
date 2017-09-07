@@ -1,7 +1,8 @@
 #include<stdio.h>
 #include<string.h>
 
-main () {
+void main()
+{
     printf("\nEnter 2 strings(max 20 characters each): ");
     char s[20];
     scanf("%s", s);

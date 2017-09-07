@@ -4,7 +4,7 @@
  * Program to display the reverse of an inputted number
  */
 
-main() {
+void main(){
     printf("Enter a number to be reversed: ");
     int n;
     scanf("%d", &n);

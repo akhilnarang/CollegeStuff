@@ -1,6 +1,6 @@
 #include<stdio.h>
 
-main() {
+void main(){
     // Declaration of variables
     int num1, num2, sum, difference, product, quotient;
     // Prompting users and accepting values

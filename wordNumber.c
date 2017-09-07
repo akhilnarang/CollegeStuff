@@ -4,7 +4,7 @@
  * Program to print the word of a given digit
  */
 
-main() {
+void main(){
     printf("Enter a digit between 0-9: "); // Prompting the user
     char n;
     scanf("%c", &n); // Accepting input

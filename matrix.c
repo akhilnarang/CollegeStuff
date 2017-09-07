@@ -4,7 +4,7 @@
   * Menu driven program to take in elements of a matrix in a DDA and display sum and difference
   */
 
-main() {
+void main(){
 
     int r,c;
     printf("Enter the number of rows: ");

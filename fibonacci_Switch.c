@@ -4,7 +4,8 @@
  * Menu driven program to display fibonaci series upto a user provided limit
  */
 
- main() {
+void main()
+{
     printf("\nEnter 1 for limit to number of elements, 2 for actual limit: ");
     int m, n, i=3;
     int a=0,b=1,c=a+b;

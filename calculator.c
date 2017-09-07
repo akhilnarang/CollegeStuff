@@ -4,7 +4,7 @@
  * Menu driven C program for a simple arithmetic calculator
  */
 
-main() {
+void main(){
     // Declaration of variables
     int a,b;
     char c;
