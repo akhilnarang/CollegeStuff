@@ -1,5 +1,9 @@
 #include <stdio.h>
 
+/**
+ * Program to accept 2 numbers, and using pointers, swap them
+ */
+
 void swap(int *a, int *b)
 {
     int c=*a;

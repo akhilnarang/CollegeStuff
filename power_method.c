@@ -1,8 +1,8 @@
 #include<stdio.h>
 
 /**
-  * Program to calculate power of a number calling a function recursively
-  */
+ * Program to calculate power of a number calling a function recursively
+ */
 
 int power(int n, int p) {
     if (p==1) {

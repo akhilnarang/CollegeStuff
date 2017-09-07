@@ -1,8 +1,8 @@
 #include<stdio.h>
 
 /**
-  * Program to calculate factorial of a number calling a function recursively
-  */
+ * Program to calculate factorial of a number calling a function recursively
+ */
 
 int factorial(int n) {
     if (n==1) {

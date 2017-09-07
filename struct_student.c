@@ -1,8 +1,8 @@
 #include <stdio.h>
 
 /**
-  * Program to accept details of student in a structure and display result
-  */
+ * Program to accept details of student in a structure and display result
+ */
 
 void main()
 {

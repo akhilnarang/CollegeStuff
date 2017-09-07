@@ -1,5 +1,9 @@
 #include<stdio.h>
 
+/**
+ * Program to find and print the sum of 2 inputted numbers
+ */
+
 int main() {
     int m,n,sum;
     printf("Enter 2 numbers:\n");

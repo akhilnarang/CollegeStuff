@@ -1,8 +1,8 @@
 #include <stdio.h>
 
 /**
-  * Program to take in elements of a matrix in a DDA and display the product
-  */
+ * Program to take in elements of a matrix in a DDA and display the product
+ */
 
 void main(){
 

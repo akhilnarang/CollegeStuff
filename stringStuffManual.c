@@ -1,8 +1,8 @@
 #include <stdio.h>
 
 /**
-  * Menu driven program to perform various string operations
-  */
+ * Menu driven program to perform various string operations
+ */
 
 void main()
 {

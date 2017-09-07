@@ -1,8 +1,8 @@
 #include <stdio.h>
 
 /**
-  * Menu driven program to take in elements of a matrix in a DDA and display sum and difference
-  */
+ * Menu driven program to take in elements of a matrix in a DDA and display sum and difference
+ */
 
 void main(){
 

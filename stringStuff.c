@@ -1,6 +1,10 @@
 #include<stdio.h>
 #include<string.h>
 
+/**
+ * Program to take 2 strings from the user and print the output of various string functions on them 
+ */ 
+
 void main()
 {
     printf("\nEnter 2 strings(max 20 characters each): ");

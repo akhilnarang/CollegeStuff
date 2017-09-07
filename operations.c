@@ -1,5 +1,9 @@
 #include<stdio.h>
 
+/**
+ * Program to accept 2 numbers and print the output of various mathematical operations performed on them
+ */
+
 void main(){
     // Declaration of variables
     int num1, num2, sum, difference, product, quotient;
