@@ -2,4 +2,5 @@
 
 echo "Just a collection of random C stuff" > README.md
 for f in $(ls *.c); do echo $f >> README.md; grep "^ \* " $f >> README.md; echo >> README.md; done
-
+git commit -asm "Automated README update on $(date +%x)"
+git push origin master -u
