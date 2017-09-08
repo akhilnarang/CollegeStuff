@@ -38,6 +38,7 @@ matrix.c
 
 matrixmultiply.c
  * Program to take in elements of a matrix in a DDA and display the product
+ * DOES NOT WORK :D
 
 operations.c
  * Program to accept 2 numbers and print the output of various mathematical operations performed on them
@@ -46,7 +47,7 @@ percentage.c
  * Program to display total marks and percentage and grade
 
 pointer_swap.c
- * Program to accept 2 numbers, and using pointers, swap them
+ * Program to accept and swap 2 integers using pointers
 
 power_method.c
  * Program to calculate power of a number calling a function recursively
