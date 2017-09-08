@@ -2,9 +2,11 @@
 
 /**
  * Program to take in elements of a matrix in a DDA and display the product
+ * DOES NOT WORK :D
  */
 
-void main(){
+void main()
+{
 
     int ra, ca, rb, cb;
     printf("Enter the number of rows of a: ");
@@ -22,7 +24,7 @@ void main(){
         printf("\nColumns of a should be equal to rows of b!");
     } else {
         int i, j, k;
-
+    
         printf("\nEnter elements of a:\n");
         for(i=0;i<ra;i++) {
             for(j=0;j<ca;j++) {
@@ -30,7 +32,7 @@ void main(){
                 scanf("%d", &a[i][j]);
             }
         }
-
+        
         printf("\nEnter elements of b:\n");
         for(i=0;i<rb;i++) {
             for(j=0;j<cb;j++) {
@@ -38,26 +40,26 @@ void main(){
                 scanf("%d", &b[i][j]);
             }
         }
-
-
+    
+        
         printf("\nElements of a are:\n");
-
+        
         for(i=0;i<ra;i++) {
             for(j=0;j<ca;j++) {
                 printf("a[%d][%d] - %d\t", i+1, j+1, a[i][j]);
             }
             printf("\n");
         }
-
+        
         printf("\nElements of b are:\n");
-
+        
         for(i=0;i<rb;i++) {
             for(j=0;j<cb;j++) {
                 printf("b[%d][%d] - %d\t", i+1, j+1, b[i][j]);
             }
             printf("\n");
         }
-
+       
         printf("\nProduct is:\n");
         int t;
         for(i=0;i<ra;i++) {
@@ -70,6 +72,6 @@ void main(){
             }
         printf("\n");
         }
-    }
+    }  
     printf("\n");
 }

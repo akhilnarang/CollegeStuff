@@ -1,10 +1,10 @@
 #include <stdio.h>
 
-/**
+/** 
  * Menu driven C program for a simple arithmetic calculator
  */
 
-void main(){
+main() {
     // Declaration of variables
     int a,b;
     char c;
@@ -15,7 +15,7 @@ void main(){
     scanf("%d", &a);
     printf("b: ");
     scanf("%d", &b);
-    printf("Choose operation c:\n\t+ for addition,\n\t- for subtraction,\n\t* f");
+    printf("Choose operation c:\n\t+ for addition,\n\t- for subtraction,\n\t* f"); 
     printf("or multiplication,\n\t/ for division, and\n\t%% for remainder\n");
     printf("c: ");
     scanf("%c%c", &c, &c);

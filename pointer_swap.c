@@ -1,27 +1,36 @@
 #include <stdio.h>
 
 /**
- * Program to accept 2 numbers, and using pointers, swap them
+ * Program to accept and swap 2 integers using pointers
  */
 
+// Method to swap 2 numbers using pointers
 void swap(int *a, int *b)
 {
-    int c=*a;
-    *a=*b;
-    *b=c;    
+    // Swapping a and b
+    *a=*a+*b;
+    *b=*a-*b;
+    *a=*a-*b;
 }
 
 void main()
 {
-    printf("Enter 2 numbers.\n");
+    // Declaring variables
     int a, b;
+    // Prompting user and accepting 2 integers a and b
+    printf("Enter 2 numbers.\n");
     printf("a: ");
     scanf("%d", &a);
     printf("b: ");
     scanf("%d", &b);
-    printf("\nValue of a is %d.\nValue of b is %d.\n", a, b);
-    printf("\n\nSwapping values!\n\n");
+    printf("\n");
+    // Printing values before swap
+    printf("Value of a is %d.\n", a);
+    printf("Value of b is %d.\n", b);
+    printf("\nSwapping!\n\n");
+    // swap() function call
     swap(&a, &b);
-    printf("\nValue of a is %d.\nValue of b is %d.\n", a, b);
+    // Printing values after swap
+    printf("Value of a is %d.\n", a);
+    printf("Value of b is %d.\n", b);
 }
-
