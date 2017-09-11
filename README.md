@@ -59,7 +59,7 @@ reverse.c
  * Program to display the reverse of an inputted number
 
 stringStuff.c
- * Program to take 2 strings from the user and print the output of various string functions on them 
+ * Program to take 2 strings from the user and print the output of various string functions on them
 
 stringStuffManual.c
  * Menu driven program to perform various string operations

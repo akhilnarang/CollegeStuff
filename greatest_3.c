@@ -6,7 +6,7 @@
 
 int main()
 {
-    // Declaration of variables 
+    // Declaration of variables
     int a,b,c;
     // Prompting user to enter numbers
     printf("Please enter values for 3 numbers\n");
@@ -16,7 +16,7 @@ int main()
     scanf("%d", &b);
     printf("c: ");
     scanf("%d", &c);
-    
+
     // Checking greatest of the numbers and printing accordingly
     if (a>b && a>c) { // a is greater than b and c
         printf("a (%d) is greater than b (%d) and c (%d).\n", a, b, c);

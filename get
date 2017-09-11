@@ -8,7 +8,7 @@ do
     echo -e "Downloading $name"
     drive download  $id --force
     echo "${name}:" >> /tmp/cstuff_update
-    grep "^  \* " $name >> /tmp/cstuff_update
+    grep "^ \* " $name >> /tmp/cstuff_update
     echo "" >> /tmp/cstuff_update
     echo -e "Deleting $name from drive"
     drive delete $id

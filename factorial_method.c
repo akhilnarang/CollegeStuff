@@ -3,7 +3,7 @@
 /**
  * Program to calculate factorial of a number calling a function recursively
  */
- 
+
 // function that computes the factorial of a number by calling itself
 int factorial(int n)
 {
@@ -27,5 +27,5 @@ void main()
     } else {
         // Call factorial() and print the value
         printf("\nFactorial of %d is %d!\n", n, factorial(n));
-    }       
+    }
 }

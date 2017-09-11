@@ -19,4 +19,4 @@ void main()
             printf("%d is a factor of %d!\n", i, n);
         }
     }
-}	
+}

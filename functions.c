@@ -4,8 +4,8 @@
  * Program to define and call a couple of methods to perform some mathematical
  * operations
  */
-  
-// Function that returns the sum of 2 integers 
+
+// Function that returns the sum of 2 integers
 int add(int a, int b)
 {
     return a+b;

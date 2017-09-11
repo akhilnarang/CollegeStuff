@@ -14,7 +14,7 @@ int main()
     scanf("%d", &a);
     printf("b: ");
     scanf("%d", &b);
-    // Checking which number is greater and printing 
+    // Checking which number is greater and printing
     if (a>b) { // a is greater than b
         printf("a (%d) is greater than b (%d).\n", a, b);
     } else if (b>a) { // b is greater than a

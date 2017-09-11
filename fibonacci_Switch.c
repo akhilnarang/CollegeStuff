@@ -3,7 +3,7 @@
 /**
  * Menu driven program to display fibonaci series upto a user provided limit
  */
- 
+
 void main()
 {
     // Prompting the user
@@ -47,5 +47,5 @@ void main()
             printf("\n");
             break;
         }
-    }      
+    }
 }
