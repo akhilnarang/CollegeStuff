@@ -1,4 +1,7 @@
 Just a collection of random C stuff
+
+[![Build Status](https://travis-ci.org/akhilnarang/cstuff.svg?branch=master)](https://travis-ci.org/akhilnarang/cstuff)
+
 add.c
  * Program to find and print the sum of 2 inputted numbers
 
