@@ -16,7 +16,7 @@ void main()
     fprintf(file1, "\n%s %d %c %f\n", "Some data", 2, 'c', 1.5);
     // Closing file1
     fclose(file1);
-    printf("Wrote the data to file-test-1! Printing it now!\n\n");  
+    printf("Wrote the data to file-test-1! Printing it now!\n\n");
     // Opening file-test-1 in read mode into file1
     file1=fopen("file-test-1", "r");
     // Loop over all the characters in file1 (until EOF) and print to the console
@@ -40,7 +40,7 @@ void main()
     fclose(file2);
     // Opening file-test-2 in read mode into file2
     file2=fopen("file-test-2", "r");
-    // Loop over all the characters in file2 (until EOF) and print to the console    
+    // Loop over all the characters in file2 (until EOF) and print to the console
     while ((c=getc(file2))!=EOF) {
         printf("%c", c);
     }
