@@ -23,6 +23,9 @@ fibonacci.c
 fibonacci_Switch.c
  * Menu driven program to display fibonaci series upto a user provided limit
 
+filestuff.c
+ * Program to perform some file operations
+
 functions.c
  * Program to define and call a couple of methods to perform some mathematical
  * operations
