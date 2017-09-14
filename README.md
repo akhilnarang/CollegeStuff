@@ -5,6 +5,9 @@ Just a collection of random C stuff
 add.c
  * Program to find and print the sum of 2 inputted numbers
 
+arg_filestuff.c
+ * Program to perform some file operations based on the filenames passed as parameters
+
 calculator.c
  * Menu driven C program for a simple arithmetic calculator
 
