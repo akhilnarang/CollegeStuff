@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+sed -i -r 's/([^ \t]+)[ \t]+$/\1/' *.c
+git commit -asm "Automated cleanup on $(date +%x)"
+git push origin master -u
+
