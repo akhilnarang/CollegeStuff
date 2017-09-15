@@ -50,7 +50,7 @@ void main(int argc, char *argv[])
     fclose(file2);
     // Opening argv[2] in read mode into file2
     file2=fopen(argv[2], "r");
-    // Loop over all the characters in file2 (until EOF) and print to the console    
+    // Loop over all the characters in file2 (until EOF) and print to the console
     while ((c=getc(file2))!=EOF) {
         printf("%c", c);
     }
@@ -63,7 +63,7 @@ void main(int argc, char *argv[])
 
 /* EXECUTION
 fpllab@fpllab-OptiPlex-9020:~$ gcc ./arg_filestuff.c
-fpllab@fpllab-OptiPlex-9020:~$ ./a.out 
+fpllab@fpllab-OptiPlex-9020:~$ ./a.out
 Exactly 2 arguments are required!
 Syntax :-
 
