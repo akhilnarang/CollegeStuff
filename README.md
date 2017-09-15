@@ -6,7 +6,8 @@ add.c
  * Program to find and print the sum of 2 inputted numbers
 
 arg_filestuff.c
- * Program to perform some file operations based on the filenames passed as parameters
+ * Program to copy the contents of one file into another
+ * The filenames are taken as command line arguments
 
 calculator.c
  * Menu driven C program for a simple arithmetic calculator
