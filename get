@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+echo "Automated update of CPP from Google Drive - $(date +%x)" > /tmp/cpp_update
+for f in $(drive list | grep "\.cpp" | awk '{print $1"-"$2}')
+do
+    id=$(echo $f | cut -d- -f1)
+    name=$(echo $f | cut -d- -f2)
+    echo -e "Downloading $name"
+    drive download  $id --force
+    echo "${name}:" >> /tmp/cpp_update
+    grep "^ \* " $name >> /tmp/cpp_update
+    echo "" >> /tmp/cpp_update
+    echo -e "Deleting $name from drive"
+    drive delete $id
+done
+
+git add -A
+git commit -asF /tmp/cpp_update
+git push origin master -u
+
