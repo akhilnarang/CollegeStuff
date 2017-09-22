@@ -1,8 +1,9 @@
 #include <iostream>
-#include <cstdlib>
+#include <stdlib.h>
 
 /**
  * Menu driven program to perform basic mathematical operations
+ * Keep taking input from the user, until invalid input is entered, then exit
  */
 
 using namespace std;
@@ -13,7 +14,7 @@ class Calculator
     // Declaring global variables which will be used by all the methods
     int a, b, result;
 
-    // All the below functions will be publicly accessible
+    // All the functions defined below will be publicly accessible
     public:
         void sum()
         {
@@ -76,43 +77,49 @@ Calculator c; // Creating object of class Calcualator
 
 char ch;
 
-// Calling input() method using the object c of Calculator
-c.input();
-
-// Prompting the user and accepting input
-cout<<"Options:\n";
-cout<<"+ for addition,\n";
-cout<<"- for subtraction,\n";
-cout<<"* for multiplication,\n";
-cout<<"/ for division, and\n";
-cout<<"% for modulus!\n";
-cout<<"choice: ";
-cin>>ch;
-
-// Check the users input with switch-case and call the needed method accordingly
-switch (ch) {
-    case '+':
-        c.sum();
-        c.display();
-        break;
-    case '-':
-        c.difference();
-        c.display();
-        break;
-    case '*':
-        c.product();
-        c.display();
-        break;
-    case '/':
-        c.quotient();
-        c.display();
-        break;
-    case '%':
-        c.remainder();
-        c.display();
-        break;
-    // Default case to tell the user in the case of an invalid input
-    default:
-        cout<<"Invalid choice\n";
-    }
+do {
+    // Prompting the user and accepting input
+    cout<<"Options:\n";
+    cout<<"+ for addition,\n";
+    cout<<"- for subtraction,\n";
+    cout<<"* for multiplication,\n";
+    cout<<"/ for division,\n";
+    cout<<"% for modulus, and\n";
+    cout<<"anything else to exit!\n";
+    cout<<"choice: ";
+    cin>>ch;
+    
+    // Check the users input with switch-case and call the needed method accordingly
+    switch (ch) {
+        case '+':
+            c.input();
+            c.sum();
+            c.display();
+            break;
+        case '-':
+            c.input();
+            c.difference();
+            c.display();
+            break;
+        case '*':
+            c.input();
+            c.product();
+            c.display();
+            break;
+        case '/':
+            c.input();
+            c.quotient();
+            c.display();
+            break;
+        case '%':
+            c.input();
+            c.remainder();
+            c.display();
+            break;
+        // Default case to tell the user in the case of an invalid input
+        default:
+            cout<<"Exiting!\n";
+            exit(0);
+        }
+    } while (1);
 }
