@@ -31,15 +31,13 @@ void main()
             break;
                 case 2: // Compares and tells us if strings are equal
                 printf("\nChoice - Compare");
-                i=0, j=0;
-                while(!j) {
+                for(i=0;s1[i]!='\0'||s2[i]!='\0';i++) {
                     j=(int)s1[i]-(int)s2[i];
-                    i++;
-                    if (j==0 && (s1[i]!='\0' || s2[i]!='\0')) continue;
+                    if (j==0) continue;
                     break;
                 }
                 if (j==0) printf("\ns1 and s2 are equal!");
-                else printf("\ns1 compared to s2 : %d", j);
+                else printf("\ns1 compared to s2: %d", j);
             break;
             case 3: // Copies 2nd string into 1st
                 printf("\nChoice - Copy");
