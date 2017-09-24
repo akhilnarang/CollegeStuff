@@ -33,10 +33,10 @@ void main()
                 printf("\nChoice - Compare");
                 for(i=0;s1[i]!='\0'||s2[i]!='\0';i++) {
                     j=(int)s1[i]-(int)s2[i];
-                    if (j==0) continue;
+                    if (!j) continue;
                     break;
                 }
-                if (j==0) printf("\ns1 and s2 are equal!");
+                if (!j) printf("\ns1 and s2 are equal!");
                 else printf("\ns1 compared to s2: %d", j);
             break;
             case 3: // Copies 2nd string into 1st
