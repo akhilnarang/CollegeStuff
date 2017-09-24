@@ -31,7 +31,7 @@ void main()
             break;
                 case 2: // Compares and tells us if strings are equal
                 printf("\nChoice - Compare");
-                for(i=0;s1[1]!='\0'&&s2[i]!='\0';i++) {
+                for(i=0;s1[i]!='\0'&&s2[i]!='\0';i++) {
                     j=(int)s1[i]-(int)s2[i];
                     if (j==0) continue;
                     break;
