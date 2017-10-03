@@ -119,7 +119,7 @@ do {
 }
 /*EXECUTION
 fpllab@fpllab-OptiPlex-9020:~/Desktop/Akhil$ g++ ./calculator.cpp
-fpllab@fpllab-OptiPlex-9020:~/Desktop/Akhil$ ./a.out 
+fpllab@fpllab-OptiPlex-9020:~/Desktop/Akhil$ ./a.out
 Options:
 + for addition,
 - for subtraction,

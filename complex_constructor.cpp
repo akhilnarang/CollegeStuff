@@ -66,7 +66,7 @@ int main()
     cin>>c;
     switch (c) { // switch-case structure to check user's choice, accordingly create an object, call the required method, and display output
         case 1: {
-            cout<<"\nSum is: "; 
+            cout<<"\nSum is: ";
             Complex c3=c1.add(&c2);
             c3.display();
             break;
@@ -88,7 +88,7 @@ int main()
 }
 /*EXECUTION
 fpllab@fpllab-OptiPlex-9020:~/Desktop/Akhil$ g++ ./complex_constructor.cpp
-fpllab@fpllab-OptiPlex-9020:~/Desktop/Akhil$ ./a.out 
+fpllab@fpllab-OptiPlex-9020:~/Desktop/Akhil$ ./a.out
 
 Enter values for complex number 1!
 Real: 8
@@ -103,7 +103,7 @@ Enter 1 for addition,
 3 for substraction(second from first), and
 anything else to exit: 1
 
-Sum is: 
+Sum is:
 Real part 14
 Imaginary part 16
 
