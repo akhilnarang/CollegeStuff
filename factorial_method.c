@@ -1,17 +1,14 @@
 #include<stdio.h>
+#include<stdlib.h>
 
 /**
  * Program to calculate factorial of a number calling a function recursively
  */
-
+ 
 // function that computes the factorial of a number by calling itself
 int factorial(int n)
 {
-    if (n==1) {
-        return 1; // Exit out once we're down to 1
-    } else {
-        return(n*factorial(n-1)); // Call the function recursively
-    }
+    return n==1?n:n*factorial(n-1); // Call the function recursively
 }
 
 void main()
@@ -22,10 +19,19 @@ void main()
     int n;
     // Accepting input
     scanf("%d", &n);
-    if (n<1) { // Don't calculate if the user can't listen
+    if (n<1) { // Exit on invalid input!
         printf("\nPlease follow instructions!\n");
-    } else {
-        // Call factorial() and print the value
-        printf("\nFactorial of %d is %d!\n", n, factorial(n));
+        exit(1);
     }
+    // Call factorial() and print the value
+    printf("\nFactorial of %d is %d!\n", n, factorial(n));
 }
+
+/*EXECUTION
+fpllab@fpllab-OptiPlex-9020:~/Desktop/Akhil$ gcc ./factorial_method.c
+fpllab@fpllab-OptiPlex-9020:~/Desktop/Akhil$ ./a.out 
+
+Enter a positive integer n: 5
+
+Factorial of 5 is 120!
+*/
