@@ -29,7 +29,7 @@ void main()
 
 /*EXECUTION
 fpllab@fpllab-OptiPlex-9020:~/Desktop/Akhil$ gcc ./factorial_method.c
-fpllab@fpllab-OptiPlex-9020:~/Desktop/Akhil$ ./a.out 
+fpllab@fpllab-OptiPlex-9020:~/Desktop/Akhil$ ./a.out
 
 Enter a positive integer n: 5
 

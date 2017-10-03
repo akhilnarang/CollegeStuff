@@ -56,8 +56,8 @@ int main()
 
 }
 /* EXECUTION
-fpllab@fpllab-OptiPlex-9020:~/Desktop/Akhil$ gcc ./Assignment4_111044_Calculator.c 
-fpllab@fpllab-OptiPlex-9020:~/Desktop/Akhil$ ./a.out 
+fpllab@fpllab-OptiPlex-9020:~/Desktop/Akhil$ gcc ./Assignment4_111044_Calculator.c
+fpllab@fpllab-OptiPlex-9020:~/Desktop/Akhil$ ./a.out
 
 
 		BASIC CALCULATOR

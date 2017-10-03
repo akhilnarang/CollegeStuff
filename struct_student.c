@@ -69,7 +69,7 @@ void main()
 }
 /*EXECUTION
 fpllab@fpllab-OptiPlex-9020:~/Desktop/Akhil$ gcc ./struct_student.c
-fpllab@fpllab-OptiPlex-9020:~/Desktop/Akhil$ ./a.out 
+fpllab@fpllab-OptiPlex-9020:~/Desktop/Akhil$ ./a.out
 
 Enter number of students: 2
 

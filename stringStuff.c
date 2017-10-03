@@ -32,7 +32,7 @@ void main()
 
 /*EXECUTION
 fpllab@fpllab-OptiPlex-9020:~/Desktop/Akhil$ gcc ./stringStuff.c
-fpllab@fpllab-OptiPlex-9020:~/Desktop/Akhil$ ./a.out 
+fpllab@fpllab-OptiPlex-9020:~/Desktop/Akhil$ ./a.out
 
 Enter 2 strings(max 20 characters each)!
 String 1: hello
