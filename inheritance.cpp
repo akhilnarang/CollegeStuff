@@ -105,7 +105,7 @@ int main()
         
 /*EXECUTION
 fpllab@fpllab-OptiPlex-9020:~$ g++ ./inheritance.cpp
-fpllab@fpllab-OptiPlex-9020:~$ ./a.out 
+fpllab@fpllab-OptiPlex-9020:~$ ./a.out
 Enter 1 for circle, 2 for rectangle, 3 for triangle, anything else to exit!
 1
 Enter radius of circle!
@@ -130,4 +130,4 @@ Destroying 0x7fffb4397800!
 Enter 1 for circle, 2 for rectangle, 3 for triangle, anything else to exit!
 0
 Exiting!
-*/  
+*/
