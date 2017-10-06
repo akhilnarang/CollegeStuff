@@ -13,6 +13,10 @@ complex_constructor.cpp
 
 first.cpp
 
+inheritance.cpp
+ * Menu driven program to calculate area of different shapes
+ * Different classes are derived for different shapes from a base class shape
+
 second.cpp
 
 third.cpp
