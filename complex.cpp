@@ -35,22 +35,22 @@ public:
 	}
 
 	// Overload >> operator so that we can easily input Complex type data
-	friend istream &operator>>(istream &stdin, Complex &c) {
+	istream &operator>>(istream &stdin) {
 		cout<<"Real part: ";
-		stdin>>c.real;
+		stdin>>this->real;
 		cout<<"Imaginary part: ";
-		stdin>>c.imaginary;
+		stdin>>this->imaginary;
 		return stdin;
 	}
 
 	// Overload << operator so that we can easily display Complex type data
-	friend ostream &operator<<(ostream &stdout, Complex c) {
+	ostream &operator<<(ostream &stdout) {
 		cout<<"Complex number is: ";
 		// Check for negative cases and display + or - accordingly
-		if (c.imaginary>=0) {
-			stdout<<c.real<<"+"<<c.imaginary<<"i!\n";
+		if (this->imaginary>=0) {
+			stdout<<this->real<<"+"<<this->imaginary<<"i!\n";
 		} else {
-			stdout<<c.real<<c.imaginary<<"i!\n";
+			stdout<<this->real<<this->imaginary<<"i!\n";
 		}
 		return stdout;
 	}
@@ -88,26 +88,26 @@ int main() {
 	cin>>choice;
 	// Accept 2 complex numbers with overloaded << operator method
 	cout<<"Enter complex number 1!"<<endl;
-	cin>>c1;
+	c1>>cin;
 	cout<<"Enter complex number 2!"<<endl;
-	cin>>c2;
+	c2>>cin;
 	// Check users choice using switch-case structure
 	switch(choice) {
 	case 1:
 		c3=c1+c2;
-		cout<<c3;
+		c3<<cout;
 		break;
 	case 2:
 		c3=c1-c2;
-		cout<<c3;
+		c3<<cout;;
 		break;
 	case 3:
 		c3=c2-c1;
-		cout<<c3;
+		c3<<cout;
 		break;
 	case 4:
 		c3=c1*c2;
-		cout<<c3;
+		c3<<cout;
 		break;
 	default:
 		cout<<"Invalid choice!";
@@ -138,4 +138,3 @@ Imaginary part: 5
 Multiplying!
 Complex number is: -7+22i!
 */
-
