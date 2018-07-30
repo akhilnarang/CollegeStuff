@@ -1,8 +1,12 @@
 /*
  * complex.cpp
  *
- *  Created on: 10-Jul-2018
- *      Author: wpu
+ *  Created on     : 10-Jul-2018
+ *      Author     : Akhil Narang
+ *      Roll Number: 203132
+ *      Subject    : OOP
+ *      Title      : Performing various arithmetical operations on Complex
+ *                   numbers by using the concept of operator overloading
  */
 
 // Include headers required for basic input/output operations
@@ -30,24 +34,25 @@ public:
 		imaginary=0;
 	}
 
-	// Method to accept values from a user and set them as the real and imaginary part of a complex number
-	void setComplex() {
-		cout<<"Enter real part: ";
-		cin>>real;
-		cout<<"Enter imaginary part: ";
-		cin>>imaginary;
+	// Overload >> operator so that we can easily input Complex type data
+	friend istream &operator>>(istream &stdin, Complex &c) {
+		cout<<"Real part: ";
+		stdin>>c.real;
+		cout<<"Imaginary part: ";
+		stdin>>c.imaginary;
+		return stdin;
 	}
 
-	// Method to display a Complex number
-	void displayComplex() {
+	// Overload << operator so that we can easily display Complex type data
+	friend ostream &operator<<(ostream &stdout, Complex c) {
 		cout<<"Complex number is: ";
 		// Check for negative cases and display + or - accordingly
-		if (imaginary>=0) {
-			cout<<real<<"+"<<imaginary<<"i!\n";
+		if (c.imaginary>=0) {
+			stdout<<c.real<<"+"<<c.imaginary<<"i!\n";
 		} else {
-			cout<<real<<imaginary<<"i!\n";
+			stdout<<c.real<<c.imaginary<<"i!\n";
 		}
-
+		return stdout;
 	}
 
 	// Function to add the calling object and the object passed as a parameter and return a third object
@@ -81,26 +86,28 @@ int main() {
 	cout<<"1 for addition, 2 for subtraction, 3 for subtraction (the other way) and 4 for multiplication!\n";
 	cout<<"Enter choice: ";
 	cin>>choice;
-	// Accept 2 complex numbers with Complex.setComplex() method
-	c1.setComplex();
-	c2.setComplex();
+	// Accept 2 complex numbers with overloaded << operator method
+	cout<<"Enter complex number 1!"<<endl;
+	cin>>c1;
+	cout<<"Enter complex number 2!"<<endl;
+	cin>>c2;
 	// Check users choice using switch-case structure
 	switch(choice) {
 	case 1:
 		c3=c1+c2;
-		c3.displayComplex();
+		cout<<c3;
 		break;
 	case 2:
 		c3=c1-c2;
-		c3.displayComplex();
+		cout<<c3;
 		break;
 	case 3:
 		c3=c2-c1;
-		c3.displayComplex();
+		cout<<c3;
 		break;
 	case 4:
 		c3=c1*c2;
-		c3.displayComplex();
+		cout<<c3;
 		break;
 	default:
 		cout<<"Invalid choice!";
@@ -111,19 +118,23 @@ int main() {
 /* Output:
 1 for addition, 2 for subtraction, 3 for subtraction (the other way) and 4 for multiplication!
 Enter choice: 1
-Enter real part: 2
-Enter imaginary part: 3
-Enter real part: 2
-Enter imaginary part: 3
+Enter complex number 1!
+Real part: 2
+Imaginary part: 3
+Enter complex number 2!
+Real part: 2
+Imaginary part: 3
 Adding!
 Complex number is: 4+6i!
 
 1 for addition, 2 for subtraction, 3 for subtraction (the other way) and 4 for multiplication!
 Enter choice: 4
-Enter real part: 2
-Enter imaginary part: 3
-Enter real part: 4
-Enter imaginary part: 5
+Enter complex number 1!
+Real part: 2
+Imaginary part: 3
+Enter complex number 2!
+Real part: 4
+Imaginary part: 5
 Multiplying!
 Complex number is: -7+22i!
 */

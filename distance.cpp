@@ -1,14 +1,16 @@
 /*
  * distance.cpp
  *
- *  Created on: 17-Jul-2018
- *      Author: wpu
+ *  Created on     : 17-Jul-2018
+ *      Author     : Akhil Narang
+ *      Roll Number: 203132
+ *      Subject    : OOP
+ *      Title      : Performing various arithmetical operations on Distance
+ *                   values by using the concept of operator overloading
  */
 
 // Include headers required for basic input/output operations
 #include <iostream>
-// Include header for math functions like abs()
-#include <cmath>
 using namespace std;
 
 // Define our Distance class
@@ -32,17 +34,18 @@ public:
 		meters=0;
 	}
 
-	// Method to accept values from a user and set them as the kilometers and meters of Distance
-	void setDistance() {
+	// Overload >> operator so that we can easily input Distance type data
+	friend istream &operator>>(istream &stdin, Distance &d) {
 		cout<<"Enter kilometers: ";
-		cin>>kilometers;
+		stdin>>d.kilometers;
 		cout<<"Enter meters: ";
-		cin>>meters;
+		stdin>>d.meters;
+		return stdin;
 	}
 
-	// Method to display a Distance number
-	void displayDistance() {
-		cout<<kilometers<<"km and "<<meters<<"m!"<<endl;
+	// Overload << operator so that we can easily display Distance type data
+	friend ostream &operator<<(ostream &stdout, Distance d) {
+		cout<<d.kilometers<<"km and "<<d.meters<<"m!"<<endl;
 	}
 
 	// Function to add the calling object and the object passed as a parameter and return a third object
@@ -87,17 +90,19 @@ int main() {
 	cout<<"Enter choice: ";
 	cin>>choice;
 	// Accept 2 Distance numbers with Distance.setDistance() method
-	d1.setDistance();
-	d2.setDistance();
+	cout<<"Distance 1!"<<endl;
+	cin>>d1;
+	cout<<"Distance 2!"<<endl;
+	cin>>d2;
 	// Check users choice using switch-case structure
 	switch(choice) {
 	case 1:
 		d3 = d1 + d2;
-		d3.displayDistance();
+		cout<<d3;
 		break;
 	case 2:
 		d3 = d1 > d2 ? d1 - d2 : d2 - d1;
-		d3.displayDistance();
+		cout<<d3;
 		break;
 	default:
 		cout<<"Invalid choice!";
@@ -107,8 +112,10 @@ int main() {
 /* Output:
 1 for addition, and  2 for subtraction!
 Enter choice: 1
+Distance 1!
 Enter kilometers: 1
 Enter meters: 500
+Distance 2!
 Enter kilometers: 2
 Enter meters: 600
 Adding!
@@ -116,8 +123,10 @@ Adding!
 
 1 for addition, and  2 for subtraction!
 Enter choice: 2
+Distance 1!
 Enter kilometers: 1
 Enter meters: 1500
+Distance 2!
 Enter kilometers: 2
 Enter meters: 800
 Subtracting!
