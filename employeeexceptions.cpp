@@ -133,3 +133,31 @@ int main() {
 		e.display();
 	}
 }
+
+/*
+OUTPUT :-
+Enter name: full name
+Enter Employee id: 1
+Enter age: 25
+Enter income: 65000
+Enter city: pune
+Enter y for 4 wheeler else n: y
+Name: full name
+EmployeeExceptions ID: 1
+Age: 25
+Salary: 65000
+City: pune
+Vehicle: y
+
+Enter name: name
+Enter Employee id: 2
+Enter age: 53
+Enter income: 34000
+Enter city: delhi
+Enter y for 4 wheeler else n: n
+Exception caught. Invalid salary34000!
+Should be within range 50000 - 100000!
+Exception caught. Invalid city delhi!
+Should be one of Pune|Bangalore|Mumbai|Chennai
+Exception caught, you must have a 4 wheeler!
+*/
