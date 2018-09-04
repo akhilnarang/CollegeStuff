@@ -21,22 +21,25 @@ class Item {
 		float cost;
 
 public:
-		void addNewItem() {
+
+		istream &operator>>(istream &stdin) {
 			cout<<"Enter item code: ";
-			cin>>item_code;
+			stdin>>item_code;
 			cout<<"Enter item name: ";
-			cin>>item_name;
+			stdin>>item_name;
 			cout<<"Enter quantity : ";
-			cin>>quantity;
+			stdin>>quantity;
 			cout<<"Enter item cost: ";
-			cin>>cost;
+			stdin>>cost;
+			return stdin;
 		}
 
-		void displayItem() {
-			cout<<"Item code: "<<item_code<<endl;
-			cout<<"Item name: "<<item_name<<endl;
-			cout<<"Quantity:  "<<quantity<<endl;
-			cout<<"Item cost: "<<cost<<endl;
+		ostream &operator<<(ostream &stdout) {
+			stdout<<"Item code: "<<item_code<<endl;
+			stdout<<"Item name: "<<item_name<<endl;
+			stdout<<"Quantity:  "<<quantity<<endl;
+			stdout<<"Item cost: "<<cost<<endl;
+			return stdout;
 		}
 
 		void displayItemTable() {
@@ -61,11 +64,12 @@ public:
 			}
 			return true;
 		}
+
 };
 
 void addItem() {
 	Item i;
-	i.addNewItem();
+	i>>cin;
 	ofstream f(filepath, ios::app|ios::binary);
 	f.write((char *)&i, sizeof(i));
 	f.close();
@@ -77,7 +81,7 @@ void displayItems() {
 	while(f>>ws && !f.eof()) {
 		Item i;
 		f.read((char *)&i, sizeof(i));
-		i.displayItemTable();
+		i<<cout;
 	}
 	f.close();
 }
@@ -94,7 +98,7 @@ void searchItemCode() {
 		found = i.checkItemCode(item_code);
 		if (found) {
 			cout<<"Item found!\n";
-			i.displayItem();
+			i<<cout;
 		}
 	}
 	if (!found) {
@@ -115,7 +119,7 @@ void searchItemName() {
 		found = i.checkItemName(item_name);
 		if (found) {
 			cout<<"Item found!\n";
-			i.displayItem();
+			i<<cout;
 		}
 	}
 	if (!found) {
