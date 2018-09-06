@@ -54,17 +54,9 @@ public:
 		}
 
 		bool checkItem(char item_name[]) {
-			unsigned int i;
-			for (i=0; i<strlen(item_name); i++) {
-				char m = this->item_name[i];
-				char n = item_name[i];
-				if (m!=n && abs(m-n)!=32) {
-					return false;
-				}
-			}
-			return true;
+			int n = strcmp(this->item_name, item_name);
+			return n!=0 && abs(n)!=32;
 		}
-
 };
 
 void addItem() {
