@@ -42,18 +42,18 @@ public:
 			return stdout;
 		}
 
-		void displayItemTable() {
+		void displayItem() {
 			cout<<item_code<<"\t\t";
 			cout<<item_name<<"\t\t";
 			cout<<quantity<<"\t\t";
 			cout<<cost<<"\n";
 		}
 
-		bool checkItemCode(int item_code) {
+		bool checkItem(int item_code) {
 			return this->item_code==item_code;
 		}
 
-		bool checkItemName(char item_name[]) {
+		bool checkItem(char item_name[]) {
 			unsigned int i;
 			for (i=0; i<strlen(item_name); i++) {
 				char m = this->item_name[i];
@@ -95,7 +95,7 @@ void searchItemCode() {
 	while(!found && (f>>ws && !f.eof())) {
 		Item i;
 		f.read((char *)&i, sizeof(i));
-		found = i.checkItemCode(item_code);
+		found = i.checkItem(item_code);
 		if (found) {
 			cout<<"Item found!\n";
 			i<<cout;
@@ -116,7 +116,7 @@ void searchItemName() {
 	while(!found && (f>>ws && !f.eof())) {
 		Item i;
 		f.read((char *)&i, sizeof(i));
-		found = i.checkItemName(item_name);
+		found = i.checkItem(item_name);
 		if (found) {
 			cout<<"Item found!\n";
 			i<<cout;
