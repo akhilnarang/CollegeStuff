@@ -73,7 +73,7 @@ void displayItems() {
 	while(f>>ws && !f.eof()) {
 		Item i;
 		f.read((char *)&i, sizeof(i));
-		cout<<i;
+		i.displayItem();
 	}
 	f.close();
 }
@@ -143,7 +143,6 @@ void update() {
 int main() {
 	int ch = 0;
 	do {
-
 		cout<<"Choose from the following options!"<<endl;
 		cout<<"1. To add a new item"<<endl;
 		cout<<"2. To display all items"<<endl;
