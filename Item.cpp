@@ -22,23 +22,23 @@ class Item {
 
 public:
 
-		istream &operator>>(istream &stdin) {
+		friend istream &operator>>(istream &stdin, Item i) {
 			cout<<"Enter item code: ";
-			stdin>>item_code;
+			stdin>>i.item_code;
 			cout<<"Enter item name: ";
-			stdin>>item_name;
+			stdin>>i.item_name;
 			cout<<"Enter quantity : ";
-			stdin>>quantity;
+			stdin>>i.quantity;
 			cout<<"Enter item cost: ";
-			stdin>>cost;
+			stdin>>i.cost;
 			return stdin;
 		}
 
-		ostream &operator<<(ostream &stdout) {
-			stdout<<"Item code: "<<item_code<<endl;
-			stdout<<"Item name: "<<item_name<<endl;
-			stdout<<"Quantity:  "<<quantity<<endl;
-			stdout<<"Item cost: "<<cost<<endl;
+		friend ostream &operator<<(ostream &stdout, Item i) {
+			stdout<<"Item code: "<<i.item_code<<endl;
+			stdout<<"Item name: "<<i.item_name<<endl;
+			stdout<<"Quantity:  "<<i.quantity<<endl;
+			stdout<<"Item cost: "<<i.cost<<endl;
 			return stdout;
 		}
 
@@ -61,7 +61,7 @@ public:
 
 void addItem() {
 	Item i;
-	i>>cin;
+	cin>>i;
 	ofstream f(filepath, ios::app|ios::binary);
 	f.write((char *)&i, sizeof(i));
 	f.close();
@@ -73,7 +73,7 @@ void displayItems() {
 	while(f>>ws && !f.eof()) {
 		Item i;
 		f.read((char *)&i, sizeof(i));
-		i<<cout;
+		cout<<i;
 	}
 	f.close();
 }
@@ -90,7 +90,7 @@ void searchItemCode() {
 		found = i.checkItem(item_code);
 		if (found) {
 			cout<<"Item found!\n";
-			i<<cout;
+			cout<<i;
 		}
 	}
 	if (!found) {
@@ -111,7 +111,7 @@ void searchItemName() {
 		found = i.checkItem(item_name);
 		if (found) {
 			cout<<"Item found!\n";
-			i<<cout;
+			cout<<i;
 		}
 	}
 	if (!found) {
