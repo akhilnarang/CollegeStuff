@@ -55,7 +55,7 @@ public:
 
 		bool checkItem(char item_name[]) {
 			int n = strcmp(this->item_name, item_name);
-			return n!=0 && abs(n)!=32;
+			return n==0 || abs(n)==32;
 		}
 };
 
