@@ -12,7 +12,7 @@
 
 using namespace std;
 
-const char filepath[] = "/home/ibm/data";
+const char filepath[] = "./data";
 
 class Item {
 		int item_code;
