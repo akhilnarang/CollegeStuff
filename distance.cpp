@@ -46,6 +46,7 @@ public:
 	// Overload << operator so that we can easily display Distance type data
 	friend ostream &operator<<(ostream &stdout, Distance d) {
 		cout<<d.kilometers<<"km and "<<d.meters<<"m!"<<endl;
+		return stdout;
 	}
 
 	// Function to add the calling object and the object passed as a parameter and return a third object
