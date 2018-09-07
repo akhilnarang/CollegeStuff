@@ -145,7 +145,7 @@ public:
 	}
 
 	// Parameterized constructor
-	CommissionEmployee(string employeeName, int employeeId, float wage, int hours) : Employee(employeeName, employeeId) {
+	CommissionEmployee(string employeeName, int employeeId, float sale, float rate) : Employee(employeeName, employeeId) {
 		this->sale = sale;
 		this->rate = rate;
 		salary = 0;
