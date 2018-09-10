@@ -8,8 +8,7 @@ class Bank {
     int accountNumber;
     float balance;
 
-public:
-
+  public:
     Bank() {
         name = "";
         accountNumber = 0;
@@ -22,37 +21,37 @@ public:
     }
 
     void accept() {
-        cout<<"Enter name: ";
+        cout << "Enter name: ";
         getline(cin, name);
-        cout<<"Enter account number: ";
-        cin>>accountNumber;
-        cout<<"Enter balance: ";
-        cin>>balance;
+        cout << "Enter account number: ";
+        cin >> accountNumber;
+        cout << "Enter balance: ";
+        cin >> balance;
     }
 
     void deposit(float amount) {
-        cout<<"Current balance: "<<balance<<endl;
-        cout<<"Trying to deposit: "<<amount<<endl;
+        cout << "Current balance: " << balance << endl;
+        cout << "Trying to deposit: " << amount << endl;
         balance += amount;
-        cout<<"New balance: "<<balance<<endl;
+        cout << "New balance: " << balance << endl;
     }
 
     void withdraw(float amount) {
-        cout<<"Current balance: "<<balance<<endl;
-        cout<<"Trying to withdraw: "<<amount<<endl;
+        cout << "Current balance: " << balance << endl;
+        cout << "Trying to withdraw: " << amount << endl;
         if (amount <= balance) {
             balance -= amount;
         } else {
-            cout<<"Not enough balance to withdraw "<<amount<<endl;
+            cout << "Not enough balance to withdraw " << amount << endl;
             return;
         }
-        cout<<"New balance: "<<balance<<endl;
+        cout << "New balance: " << balance << endl;
     }
 
     void display() {
-        cout<<"Name: "<<name<<endl;
-        cout<<"Account number: "<<accountNumber<<endl;
-        cout<<"Balance: "<<balance<<endl;
+        cout << "Name: " << name << endl;
+        cout << "Account number: " << accountNumber << endl;
+        cout << "Balance: " << balance << endl;
     }
 };
 

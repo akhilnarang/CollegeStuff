@@ -7,27 +7,25 @@ class Student {
     string name;
     int rollNo;
 
-public:
+  public:
     Student() {
         name = "";
         rollNo = 0;
     }
 
-    ~Student() {
-        cout<<"Destroying "<<this<<endl;
-    }
+    ~Student() { cout << "Destroying " << this << endl; }
 
     void accept() {
-        cout<<"Enter name: ";
+        cout << "Enter name: ";
         getline(cin, name);
-        cout<<"Enter roll number: ";
-        cin>>rollNo;
+        cout << "Enter roll number: ";
+        cin >> rollNo;
     }
 
     void display() {
-        cout<<"Name: "<<name<<endl;
-        cout<<"Roll number: "<<rollNo<<endl;
-    }    
+        cout << "Name: " << name << endl;
+        cout << "Roll number: " << rollNo << endl;
+    }
 };
 
 int main() {

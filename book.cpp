@@ -26,78 +26,84 @@ using namespace std;
 // Defining our Book class
 class Book {
 
-	// Some private data members of Boo class
-	string author, title, publisher;
-	float price;
-	int position;
+    // Some private data members of Boo class
+    string author, title, publisher;
+    float price;
+    int position;
 
-// Public members of Book class
-public:
-	// Default constructor initializing the data members to "" and 0 depending on type
-	Book() {
-		author = title = publisher = "";
-		price = 0.0;
-		position = 0;
-	}
+    // Public members of Book class
+  public:
+    // Default constructor initializing the data members to "" and 0 depending
+    // on type
+    Book() {
+        author = title = publisher = "";
+        price = 0.0;
+        position = 0;
+    }
 
-	// Parameterized constructor for Book class setting the values passed by us
-	Book(string author, string title, string publisher, float price, int position) {
-		this->author = author;
-		this->title = title;
-		this->publisher = publisher;
-		this->price = price;
-		this->position = position;
-	}
+    // Parameterized constructor for Book class setting the values passed by us
+    Book(string author, string title, string publisher, float price,
+         int position) {
+        this->author = author;
+        this->title = title;
+        this->publisher = publisher;
+        this->price = price;
+        this->position = position;
+    }
 
-	// Overloaded >> operator so that we can use cin with a Book object to accept our data
-	istream &operator>>(istream &stdin) {
-		// getline() function used to accept a full line instead of a single word
-		cout<<"Enter author name: ";
-		getline(stdin, author);
-		cout<<"Enter book title: ";
-		getline(stdin, title);
-		cout<<"Enter book publisher: ";
-		getline(stdin, publisher);
-		cout<<"Enter book price: ";
-		stdin>>price;
-		cout<<"Enter book position: ";
-		stdin>>position;
-		return stdin;
-	}
+    // Overloaded >> operator so that we can use cin with a Book object to
+    // accept our data
+    istream& operator>>(istream& stdin) {
+        // getline() function used to accept a full line instead of a single
+        // word
+        cout << "Enter author name: ";
+        getline(stdin, author);
+        cout << "Enter book title: ";
+        getline(stdin, title);
+        cout << "Enter book publisher: ";
+        getline(stdin, publisher);
+        cout << "Enter book price: ";
+        stdin >> price;
+        cout << "Enter book position: ";
+        stdin >> position;
+        return stdin;
+    }
 
-	// Overloaded << operator so that we can use cout with a Book object to display our data
-	ostream &operator<<(ostream &stdout) {
-		stdout<<"Author name: "<<author<<endl;
-		stdout<<"Book title: "<<title<<endl;
-		stdout<<"Book publisher: "<<publisher<<endl;
-		stdout<<"Book price: "<<price<<endl;
-		stdout<<"Book position: "<<position<<endl;
-		return stdout;
-	}
+    // Overloaded << operator so that we can use cout with a Book object to
+    // display our data
+    ostream& operator<<(ostream& stdout) {
+        stdout << "Author name: " << author << endl;
+        stdout << "Book title: " << title << endl;
+        stdout << "Book publisher: " << publisher << endl;
+        stdout << "Book price: " << price << endl;
+        stdout << "Book position: " << position << endl;
+        return stdout;
+    }
 
-	// Destructor to tell us when the object is being destroyed
-	~Book() {
-		// Print pointer to object being destroyed
-		cout<<"Destroying object "<<this<<endl;
-	}
+    // Destructor to tell us when the object is being destroyed
+    ~Book() {
+        // Print pointer to object being destroyed
+        cout << "Destroying object " << this << endl;
+    }
 };
 
 // Defining our main() function
 int main() {
-	// Creating an object of Book
-	Book book;
-	cout<<"Enter details of book!"<<endl;
-	// Using overloaded >> operator to accept details about a book
-	book>>cin;
-	cout<<"Displaying details about book!"<<endl;
-	// Using overloaded << operator to display details about a book
-	book<<cout;
+    // Creating an object of Book
+    Book book;
+    cout << "Enter details of book!" << endl;
+    // Using overloaded >> operator to accept details about a book
+    book >> cin;
+    cout << "Displaying details about book!" << endl;
+    // Using overloaded << operator to display details about a book
+    book << cout;
 
-	// Creating another book object using our parameterized constructor to initialize it
-	Book b("Author Name", "Book Title", "Book Publisher", 399.99, 5);
+    // Creating another book object using our parameterized constructor to
+    // initialize it
+    Book b("Author Name", "Book Title", "Book Publisher", 399.99, 5);
 
-	// Using overloaded << operator to display details about this book
-	b<<cout;
+    // Using overloaded << operator to display details about this book
+    b << cout;
 }
 
 /* OUTPUT
