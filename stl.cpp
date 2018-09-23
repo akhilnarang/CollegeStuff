@@ -20,7 +20,7 @@ class Item {
     double cost;
     int quantity;
 
-   public:
+public:
     void accept();
     void display();
     void show_container();
@@ -28,8 +28,8 @@ class Item {
     void remove_item_start();
     void sort();
     void search();
-    bool operator==(Item);
-    bool operator<(Item);
+    bool operator==(const Item& i) { return i.code == this->code; }
+    bool operator<(const Item& i) { return i.code < this->code; }
     Item(int code) { this->code = code; }
 
     Item() {}
@@ -40,8 +40,15 @@ list<Item> l;
 list<Item>::iterator itr;
 
 void Item::accept() {
-    cout << "Enter details";
-    cin >> code >> name >> cost >> quantity;
+    cout << "Enter details!" << endl;
+    cout << "Code: ";
+    cin >> code;
+    cout << "Name: ";
+    cin >> name;
+    cout << "Cost: ";
+    cin >> cost;
+    cout << "Quantity: ";
+    cin >> quantity;
 }
 
 void Item::display() {
@@ -89,10 +96,6 @@ void Item::search() {
     }
 }
 
-bool Item::operator==(Item i) { return i.code == I.code; }
-
-bool Item::operator<(Item i) { return i.code < I.code; }
-
 int main() {
     int ch;
     do {
@@ -127,6 +130,8 @@ int main() {
                 break;
             case 6:
                 I.search();
+            default:
+                cout << "Invalid input! Please read the options carefully!";
         }
     } while (ch != 0);
     return 0;
