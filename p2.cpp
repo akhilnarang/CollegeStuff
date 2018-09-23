@@ -11,7 +11,7 @@ using namespace std;
 class Complex {
     int real, imaginary;
 
-  public:
+   public:
     Complex(int r, int i) {
         real = r;
         imaginary = i;
@@ -67,20 +67,20 @@ int main() {
     c1.setComplex();
     c2.setComplex();
     switch (choice) {
-    case 1:
-        c3 = c1.add(c2);
-        c3.displayComplex();
-        break;
-    case 2:
-        c3 = c1.subtract(c2);
-        c3.displayComplex();
-        break;
-    case 3:
-        c3 = c1.multiply(c2);
-        c3.displayComplex();
-        break;
-    default:
-        cout << "Invalid choice!";
+        case 1:
+            c3 = c1.add(c2);
+            c3.displayComplex();
+            break;
+        case 2:
+            c3 = c1.subtract(c2);
+            c3.displayComplex();
+            break;
+        case 3:
+            c3 = c1.multiply(c2);
+            c3.displayComplex();
+            break;
+        default:
+            cout << "Invalid choice!";
     }
     return 0;
 }

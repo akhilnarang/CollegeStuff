@@ -15,13 +15,12 @@ using namespace std;
 
 // Define our Distance class
 class Distance {
-
     // Declare our private data members
-  private:
+   private:
     int kilometers, meters;
 
     // Declare and define our public member methods
-  public:
+   public:
     // Parameterized constructor to initialize our Distance number to desired
     // values
     Distance(int kilometers, int meters) {
@@ -102,16 +101,16 @@ int main() {
     cin >> d2;
     // Check users choice using switch-case structure
     switch (choice) {
-    case 1:
-        d3 = d1 + d2;
-        cout << d3;
-        break;
-    case 2:
-        d3 = d1 > d2 ? d1 - d2 : d2 - d1;
-        cout << d3;
-        break;
-    default:
-        cout << "Invalid choice!";
+        case 1:
+            d3 = d1 + d2;
+            cout << d3;
+            break;
+        case 2:
+            d3 = d1 > d2 ? d1 - d2 : d2 - d1;
+            cout << d3;
+            break;
+        default:
+            cout << "Invalid choice!";
     }
     return 0;
 }

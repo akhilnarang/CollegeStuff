@@ -8,7 +8,7 @@ class Bank {
     int accountNumber;
     float balance;
 
-  public:
+   public:
     Bank() {
         name = "";
         accountNumber = 0;

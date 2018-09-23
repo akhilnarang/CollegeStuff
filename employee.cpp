@@ -15,7 +15,7 @@ using namespace std;
 
 // Our base class
 class Employee {
-  public:
+   public:
     // Public data members of Employee
     string employeeName;
     int employeeId;
@@ -51,7 +51,7 @@ class Employee {
 // Derive class from Employee, as virtual so that we can use multiple
 // inheritance
 class SalariedEmployee : public virtual Employee {
-  public:
+   public:
     // Data members to store salary
     float weeklySalary, salary;
 
@@ -83,7 +83,7 @@ class SalariedEmployee : public virtual Employee {
 
 // Derive class from Employee
 class HourlyEmployee : public Employee {
-  public:
+   public:
     // Data members to store the wages, salary, hours worked
     float wage, salary;
     int hours;
@@ -131,7 +131,7 @@ class HourlyEmployee : public Employee {
 // Derive class from Employee, as virtual so that we can use multiple
 // inheritance
 class CommissionEmployee : public virtual Employee {
-  public:
+   public:
     // Data members to store the sales, rate, and salary
     float sale, rate, salary;
 
@@ -174,7 +174,7 @@ class CommissionEmployee : public virtual Employee {
 // inheritance
 class SalariedCommissionEmployee : public SalariedEmployee,
                                    public CommissionEmployee {
-  public:
+   public:
     // Data member to store the salary
     float salary;
 
@@ -213,66 +213,67 @@ int main() {
     // name
     cin.ignore(1, '\n');
     switch (ch) {
-    case 1: {
-        // Case for salaried employees, create object and call method
-        // accordingly
-        cout << "SALARIED EMPLOYEE" << endl;
-        SalariedEmployee* s = new SalariedEmployee();
-        s->Employee::accept();
-        s->accept();
-        s->Employee::display();
-        s->calculateSalary();
-        s->display();
-        delete s;
-        break;
-    }
-    case 2: {
-        // Case for hourly employees, create object and call method accordingly
-        cout << "HOURLY EMPLOYEE" << endl;
-        HourlyEmployee* h = new HourlyEmployee();
-        h->Employee::accept();
-        h->accept();
-        h->Employee::display();
-        h->calculateSalary();
-        h->display();
-        delete h;
-        break;
-    }
-    case 3: {
-        // Case for commission employee, create object and call method
-        // accordingly
-        cout << "COMMISSION EMPLOYEE" << endl;
-        CommissionEmployee* c = new CommissionEmployee();
-        c->Employee::accept();
-        c->accept();
-        c->Employee::display();
-        c->calculateSalary();
-        c->display();
-        delete c;
-        break;
-    }
-    case 4: {
-        // Case for salaried commission employee, create object and call method
-        // accordingly
-        cout << "SALARIED COMMISSION EMPLOYEE" << endl;
-        SalariedCommissionEmployee* sc = new SalariedCommissionEmployee();
-        sc->Employee::accept();
-        sc->SalariedEmployee::accept();
-        sc->CommissionEmployee::accept();
-        sc->Employee::display();
-        sc->SalariedEmployee::calculateSalary();
-        sc->SalariedEmployee::display();
-        sc->CommissionEmployee::calculateSalary();
-        sc->CommissionEmployee::display();
-        sc->calculateSalary();
-        sc->display();
-        delete sc;
-        break;
-    }
-    default: {
-        // Default case, when the input matches none of the choices
-        cerr << "Invalid input!" << endl;
-    }
+        case 1: {
+            // Case for salaried employees, create object and call method
+            // accordingly
+            cout << "SALARIED EMPLOYEE" << endl;
+            SalariedEmployee* s = new SalariedEmployee();
+            s->Employee::accept();
+            s->accept();
+            s->Employee::display();
+            s->calculateSalary();
+            s->display();
+            delete s;
+            break;
+        }
+        case 2: {
+            // Case for hourly employees, create object and call method
+            // accordingly
+            cout << "HOURLY EMPLOYEE" << endl;
+            HourlyEmployee* h = new HourlyEmployee();
+            h->Employee::accept();
+            h->accept();
+            h->Employee::display();
+            h->calculateSalary();
+            h->display();
+            delete h;
+            break;
+        }
+        case 3: {
+            // Case for commission employee, create object and call method
+            // accordingly
+            cout << "COMMISSION EMPLOYEE" << endl;
+            CommissionEmployee* c = new CommissionEmployee();
+            c->Employee::accept();
+            c->accept();
+            c->Employee::display();
+            c->calculateSalary();
+            c->display();
+            delete c;
+            break;
+        }
+        case 4: {
+            // Case for salaried commission employee, create object and call
+            // method accordingly
+            cout << "SALARIED COMMISSION EMPLOYEE" << endl;
+            SalariedCommissionEmployee* sc = new SalariedCommissionEmployee();
+            sc->Employee::accept();
+            sc->SalariedEmployee::accept();
+            sc->CommissionEmployee::accept();
+            sc->Employee::display();
+            sc->SalariedEmployee::calculateSalary();
+            sc->SalariedEmployee::display();
+            sc->CommissionEmployee::calculateSalary();
+            sc->CommissionEmployee::display();
+            sc->calculateSalary();
+            sc->display();
+            delete sc;
+            break;
+        }
+        default: {
+            // Default case, when the input matches none of the choices
+            cerr << "Invalid input!" << endl;
+        }
     }
     return 0;
 }

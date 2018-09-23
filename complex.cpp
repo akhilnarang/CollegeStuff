@@ -15,13 +15,12 @@ using namespace std;
 
 // Define our Complex class
 class Complex {
-
     // Declare our private data members
-  private:
+   private:
     int real, imaginary;
 
     // Declare and define our public member methods
-  public:
+   public:
     // Parameterized constructor to initialize our Complex number to desired
     // values
     Complex(int real, int imaginary) {
@@ -99,25 +98,25 @@ int main() {
     c2 >> cin;
     // Check users choice using switch-case structure
     switch (choice) {
-    case 1:
-        c3 = c1 + c2;
-        c3 << cout;
-        break;
-    case 2:
-        c3 = c1 - c2;
-        c3 << cout;
-        ;
-        break;
-    case 3:
-        c3 = c2 - c1;
-        c3 << cout;
-        break;
-    case 4:
-        c3 = c1 * c2;
-        c3 << cout;
-        break;
-    default:
-        cout << "Invalid choice!";
+        case 1:
+            c3 = c1 + c2;
+            c3 << cout;
+            break;
+        case 2:
+            c3 = c1 - c2;
+            c3 << cout;
+            ;
+            break;
+        case 3:
+            c3 = c2 - c1;
+            c3 << cout;
+            break;
+        case 4:
+            c3 = c1 * c2;
+            c3 << cout;
+            break;
+        default:
+            cout << "Invalid choice!";
     }
     return 0;
 }

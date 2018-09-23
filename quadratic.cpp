@@ -14,15 +14,14 @@
 using namespace std;
 // Define our Quadratic class
 class Quadratic {
-
     // Declare and define our public data members and member methods
-  public:
+   public:
     int a, b, c;
-    Quadratic();                    // Default constructor
-    Quadratic(int, int, int);       // Parameterized constructor
-    Quadratic operator+(Quadratic); // Function to add caller and parameter
-    Quadratic
-    operator-(Quadratic); // Function to subtract parameter from caller
+    Quadratic();                     // Default constructor
+    Quadratic(int, int, int);        // Parameterized constructor
+    Quadratic operator+(Quadratic);  // Function to add caller and parameter
+    Quadratic operator-(
+        Quadratic);  // Function to subtract parameter from caller
     friend istream& operator<<(istream stdin, Quadratic q);
     friend istream& operator>>(ostream stdout, Quadratic q);
 };

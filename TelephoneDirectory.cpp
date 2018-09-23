@@ -6,9 +6,9 @@
 // Description : TelephoneDirectory in C++, Ansi-style
 //============================================================================
 
+#include <string.h>
 #include <fstream>
 #include <iostream>
-#include <string.h>
 using namespace std;
 
 int main() {

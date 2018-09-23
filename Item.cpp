@@ -5,10 +5,10 @@
  *      Author: ibm
  */
 
+#include <string.h>
 #include <cstdlib>
 #include <fstream>
 #include <iostream>
-#include <string.h>
 
 using namespace std;
 
@@ -20,7 +20,7 @@ class Item {
     int quantity;
     float cost;
 
-  public:
+   public:
     friend istream& operator>>(istream& stdin, Item i) {
         cout << "Enter item code: ";
         stdin >> i.item_code;
@@ -123,14 +123,14 @@ void search() {
     int c;
     cin >> c;
     switch (c) {
-    case 1:
-        searchItemCode();
-        break;
-    case 2:
-        searchItemName();
-        break;
-    default:
-        cout << "Wrong choice!" << endl;
+        case 1:
+            searchItemCode();
+            break;
+        case 2:
+            searchItemName();
+            break;
+        default:
+            cout << "Wrong choice!" << endl;
     }
 }
 
@@ -149,23 +149,23 @@ int main() {
         cin >> ch;
 
         switch (ch) {
-        case 0:
-            cout << "Exiting!";
-            exit(0);
-            break;
-        case 1:
-            addItem();
-            break;
-        case 2:
-            displayItems();
-            break;
-        case 3:
-            search();
-            break;
-        case 4:
-            update();
-            break;
-        default: { cout << "Wrong choice!" << endl; }
+            case 0:
+                cout << "Exiting!";
+                exit(0);
+                break;
+            case 1:
+                addItem();
+                break;
+            case 2:
+                displayItems();
+                break;
+            case 3:
+                search();
+                break;
+            case 4:
+                update();
+                break;
+            default: { cout << "Wrong choice!" << endl; }
         }
     } while (ch != 0);
     return 0;

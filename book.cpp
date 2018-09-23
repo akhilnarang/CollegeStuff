@@ -25,14 +25,13 @@ using namespace std;
 
 // Defining our Book class
 class Book {
-
     // Some private data members of Boo class
     string author, title, publisher;
     float price;
     int position;
 
     // Public members of Book class
-  public:
+   public:
     // Default constructor initializing the data members to "" and 0 depending
     // on type
     Book() {

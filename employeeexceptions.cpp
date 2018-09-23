@@ -9,14 +9,14 @@
 
 // Including headers needed for input/output operations and strings
 
-#include <iostream>
 #include <string.h>
+#include <iostream>
 using namespace std;
 
 // Defining our class
 class EmployeeExceptions {
     // Public access for our data members and member methods
-  public:
+   public:
     int employee_id, age;
     string name, city;
     float salary;

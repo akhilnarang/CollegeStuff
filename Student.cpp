@@ -7,7 +7,7 @@ class Student {
     string name;
     int rollNo;
 
-  public:
+   public:
     Student() {
         name = "";
         rollNo = 0;
