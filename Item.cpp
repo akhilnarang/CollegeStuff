@@ -54,6 +54,14 @@ class Item {
         int n = strcmp(this->item_name, item_name);
         return n == 0 || abs(n) == 32;
     }
+
+    int getQuantity() {
+        return this->quantity;
+    }
+
+    void setQuantity(int quantity) {
+        this->quantity = quantity;
+    }
 };
 
 void addItem() {
@@ -134,7 +142,37 @@ void search() {
     }
 }
 
-void update() {}
+void update() {
+    int pos = -1;
+    bool found = false;
+    int item_code;
+    cout << "Enter item code of the item you want purchase: ";
+    cin >> item_code;
+    ifstream f(filepath, ios::binary);
+    while (!found && (f >> ws && !f.eof())) {
+        Item i;
+        f.read((char*)&i, sizeof(i));
+        found = i.checkItem(item_code);
+        if (found) {
+            cout << "Item found!\n";
+            cout << i;
+            pos = f.tellg();
+        }
+    }
+    f.seekg(pos);
+    Item i;
+    f.read((char*)&i, sizeof(i));
+    if (i.getQuantity() <1 ) {
+        cout << "Quantity already 0 - cannot purchase!\n";
+    } else {
+        i.setQuantity(i.getQuantity()-1);
+    }
+
+    if (!found) {
+        cout << "Item with item code " << item_code << " not found!";
+    }
+    f.close();
+}
 
 int main() {
     int ch = 0;
