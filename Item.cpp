@@ -21,27 +21,25 @@ class Item {
     float cost;
 
    public:
-    friend istream& operator>>(istream& stdin, Item i) {
+    void addNewItem() {
         cout << "Enter item code: ";
-        stdin >> i.item_code;
+        cin >> item_code;
         cout << "Enter item name: ";
-        stdin >> i.item_name;
+        cin >> item_name;
         cout << "Enter quantity : ";
-        stdin >> i.quantity;
+        cin >> quantity;
         cout << "Enter item cost: ";
-        stdin >> i.cost;
-        return stdin;
-    }
-
-    friend ostream& operator<<(ostream& stdout, Item i) {
-        stdout << "Item code: " << i.item_code << endl;
-        stdout << "Item name: " << i.item_name << endl;
-        stdout << "Quantity:  " << i.quantity << endl;
-        stdout << "Item cost: " << i.cost << endl;
-        return stdout;
+        cin >> cost;
     }
 
     void displayItem() {
+        cout << "Item code: " << item_code << endl;
+        cout << "Item name: " << item_name << endl;
+        cout << "Quantity:  " << quantity << endl;
+        cout << "Item cost: " << cost << endl;
+    }
+
+    void displayItemTabular() {
         cout << item_code << "\t\t";
         cout << item_name << "\t\t";
         cout << quantity << "\t\t";
@@ -66,7 +64,7 @@ class Item {
 
 void addItem() {
     Item i;
-    cin >> i;
+    i.addNewItem();
     ofstream f(filepath, ios::app | ios::binary);
     f.write((char*)&i, sizeof(i));
     f.close();
@@ -78,7 +76,7 @@ void displayItems() {
     while (f >> ws && !f.eof()) {
         Item i;
         f.read((char*)&i, sizeof(i));
-        i.displayItem();
+        i.displayItemTabular();
     }
     f.close();
 }
@@ -95,7 +93,7 @@ void searchItemCode() {
         found = i.checkItem(item_code);
         if (found) {
             cout << "Item found!\n";
-            cout << i;
+            i.displayItem();
         }
     }
     if (!found) {
@@ -116,7 +114,7 @@ void searchItemName() {
         found = i.checkItem(item_name);
         if (found) {
             cout << "Item found!\n";
-            cout << i;
+            i.displayItem();
         }
     }
     if (!found) {
@@ -151,24 +149,28 @@ void update() {
     ifstream f(filepath, ios::binary);
     while (!found && (f >> ws && !f.eof())) {
         Item i;
+        pos = f.tellg();
         f.read((char*)&i, sizeof(i));
         found = i.checkItem(item_code);
         if (found) {
-            cout << "Item found!\n";
-            cout << i;
-            pos = f.tellg();
+            break;
         }
     }
-    f.seekg(pos);
-    Item i;
-    f.read((char*)&i, sizeof(i));
-    if (i.getQuantity() <1 ) {
-        cout << "Quantity already 0 - cannot purchase!\n";
+    if (found) {
+        f.seekg(pos);
+        Item i;
+        f.read((char *) &i, sizeof(i));
+        f.close();
+        if (i.getQuantity() < 1) {
+            cout << "Quantity already 0 - cannot purchase!\n";
+        } else {
+            i.setQuantity(i.getQuantity() - 1);
+            ofstream f(filepath, ios::ate | ios::binary);
+            f.seekp(pos);
+            f.write((char *) &i, sizeof(i));
+            f.close();
+        }
     } else {
-        i.setQuantity(i.getQuantity()-1);
-    }
-
-    if (!found) {
         cout << "Item with item code " << item_code << " not found!";
     }
     f.close();
