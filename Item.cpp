@@ -53,13 +53,9 @@ class Item {
         return n == 0 || abs(n) == 32;
     }
 
-    int getQuantity() {
-        return this->quantity;
-    }
+    int getQuantity() { return this->quantity; }
 
-    void setQuantity(int quantity) {
-        this->quantity = quantity;
-    }
+    void setQuantity(int quantity) { this->quantity = quantity; }
 };
 
 void addItem() {
@@ -159,7 +155,7 @@ void update() {
     if (found) {
         f.seekg(pos);
         Item i;
-        f.read((char *) &i, sizeof(i));
+        f.read((char*)&i, sizeof(i));
         f.close();
         if (i.getQuantity() < 1) {
             cout << "Quantity already 0 - cannot purchase!\n";
@@ -167,7 +163,7 @@ void update() {
             i.setQuantity(i.getQuantity() - 1);
             ofstream f(filepath, ios::ate | ios::binary);
             f.seekp(pos);
-            f.write((char *) &i, sizeof(i));
+            f.write((char*)&i, sizeof(i));
             f.close();
         }
     } else {

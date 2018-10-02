@@ -13,48 +13,47 @@ using namespace std;
 
 // Declaring a template for us to use, so that our queue can be of any data type
 template <typename T>
-class Queue{
+class Queue {
     // Size of our queue (array)
     const static int size = 4;
 
     // Variable to hold the rear and front position in the queue
-    int rear,front;
+    int rear, front;
 
     // Our queue, of type T
-     T t[size];
+    T t[size];
 
-    public:
-
+   public:
     // Constructor to initialize the front and rear
-    Queue(){
-        rear=-1;
-        front=-1;
+    Queue() {
+        rear = -1;
+        front = -1;
     }
 
     // Method to push elements onto the queue
-    void enqueue(){
+    void enqueue() {
         if (rear == size) {
             cout << "Queue is full! Cannot push more!\n";
             return;
-        } 
+        }
         T n;
         cout << "Enter value to be pushed: ";
         cin >> n;
-        if(front==-1){
-            front=0;
+        if (front == -1) {
+            front = 0;
         }
         rear++;
-        t[rear]=n;
+        t[rear] = n;
     }
 
     // Method to pop elements from the front of the queue
-    void dequeue(){
-        if(front==-1&&rear==-1){
+    void dequeue() {
+        if (front == -1 && rear == -1) {
             cout << "Queue is empty! Cannot pop more!\n";
             return;
         }
-        if(front==rear){
-            front=rear=-1; 
+        if (front == rear) {
+            front = rear = -1;
             return;
         }
         front++;
@@ -62,15 +61,14 @@ class Queue{
 
     // Method to display the elements in the stack
     void display() {
-        if(front==-1&&rear==-1){
+        if (front == -1 && rear == -1) {
             cout << "Queue is empty!\n";
             return;
         }
-        for (int i = front; i<=rear; i++) {
+        for (int i = front; i <= rear; i++) {
             cout << t[i] << endl;
         }
     }
-
 };
 template <typename T>
 void stuff(Queue<T> q) {
