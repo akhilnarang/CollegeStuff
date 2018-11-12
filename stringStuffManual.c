@@ -48,18 +48,16 @@ void concat(char *s1) {
   printf("s3: %s\n", s3);
 }
 
-char *reverse(char *s) {
-  printf("IN REV1\n");
-  char *c;
-  printf("IN REV2\n");
+char *reverse(char s[]) {
   int i = length(s);
+  char c[i];
   int j = 0;
-  printf("IN REV3\n");
   while (i-- > 0) {
-    printf("IN LOOP %d %d\n", i, j);
     c[j++] = s[i];
   }
-  return c;
+  c[j]='\0';
+  char *ch = c;
+  return ch;
 }
 
 int equal(char *s, char *c) {
@@ -72,16 +70,8 @@ int equal(char *s, char *c) {
   return j;
 }
 
-void palin(char *s) {
-  printf("IN PALIN1\n");
-  char *c = reverse(s);
-  printf("IN PALIN2\n");
-  printf("%s\n", c);
-  if (!equal(s, c)) {
-    printf("Palindrome!\n");
-  } else {
-    printf("Not palindrome!\n");
-  }
+int palin(char *s) {
+  return equal(s, reverse(s));
 }
 
 int main() {
@@ -125,7 +115,14 @@ int main() {
         printf("s compared to c: %d!\n", n);
       break;
     case 8:
-      palin(s);
+      printf("%s is ", s);
+      int r = palin(s);
+      if (!r) {
+    	  printf("a");
+      } else {
+    	  printf("not a");
+      }
+      printf(" palindrome!\n");
       break;
     case 0:
       printf("Exiting!");
