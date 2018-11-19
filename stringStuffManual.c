@@ -12,7 +12,9 @@ void accept(char *s) {
 }
 
 // Method to display a string
-void display(char *s) { printf("Entered string is: %s!\n", s); }
+void display(char *s) {
+	puts(s);
+}
 
 // Method to return the length of a string
 int length(char *s) {
@@ -60,7 +62,7 @@ char *reverse(char s[]) {
   return ch;
 }
 
-int equal(char *s, char *c) {
+int equal(char s[], char c[]) {
   int i, j = 0;
   for (i = 0; s[i] != '\0' || c[i] != '\0'; i++) {
     j = (int)s[i] - (int)c[i];
@@ -74,13 +76,30 @@ int palin(char *s) {
   return equal(s, reverse(s));
 }
 
+void substring(char s[], char c[]) {
+	int count = 0, i, j, k, n;
+	char str[length(c)];
+	for (i = 0; i < length(s) - length(c) + 1; i++) {
+		for(j=0;j<length(c);j++) {
+			str[j]=s[i+j];
+		}
+		for (k = 0; c[k] != '\0'; k++) {
+		    n = (int)c[k] - (int)str[k];
+		    if (n)
+		      break;
+		}
+		if (n==0) count++;
+	}
+	printf("Count: %d\n", count);
+}
+
 int main() {
   int ch;
   char s[256], c[256];
   do {
     printf("1 to accept, 2 to display, 3 for length, 4 to copy string, ");
     printf("5 to concatenate, 6 to reverse, 7 to check equality,\n");
-    printf("8 to check palindrome, and 0 to exit!\n");
+    printf("8 to check palindrome, 9 for substring, and 0 to exit!\n");
     printf("Enter choice: ");
     scanf("%d", &ch);
     switch (ch) {
@@ -123,6 +142,11 @@ int main() {
     	  printf("not a");
       }
       printf(" palindrome!\n");
+      break;
+    case 9:
+      printf("Enter substring you want to search for: ");
+      scanf("%s", c);
+      substring(s, c);
       break;
     case 0:
       printf("Exiting!");
