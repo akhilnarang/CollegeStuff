@@ -6,31 +6,18 @@
  */
 
 // Function that returns the sum of 2 integers
-int add(int a, int b)
-{
-    return a+b;
-}
+int add(int a, int b) { return a + b; }
 
 // Function that returns the difference between 2 integers
-int subtract(int a, int b)
-{
-    return a-b;
-}
+int subtract(int a, int b) { return a - b; }
 
 // Function that returns the product of 2 numbers
-int multiply(int a, int b)
-{
-    return a*b;
-}
+int multiply(int a, int b) { return a * b; }
 
 // Function that returns the quotient of 2 numbers
-int divide(int a, int b)
-{
-    return a/b;
-}
+int divide(int a, int b) { return a / b; }
 
-void main()
-{
+void main() {
     // Prompting the user for input
     printf("\nEnter 2 integers!\n");
     int a, b;

@@ -1,12 +1,12 @@
-#include<stdio.h>
-#include<string.h>
+#include <stdio.h>
+#include <string.h>
 
 /**
- * Program to take 2 strings from the user and print the output of various string functions on them
+ * Program to take 2 strings from the user and print the output of various
+ * string functions on them
  */
 
-void main()
-{
+void main() {
     // Prompting user, declaring 2 strings, accepting input
     printf("\nEnter 2 strings(max 20 characters each)!\n");
     char s[20];

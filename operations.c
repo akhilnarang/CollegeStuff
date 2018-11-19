@@ -1,10 +1,11 @@
-#include<stdio.h>
+#include <stdio.h>
 
 /**
- * Program to accept 2 numbers and print the output of various mathematical operations performed on them
+ * Program to accept 2 numbers and print the output of various mathematical
+ * operations performed on them
  */
 
-void main(){
+void main() {
     // Declaration of variables
     int num1, num2, sum, difference, product, quotient;
     // Prompting users and accepting values
@@ -14,13 +15,13 @@ void main(){
     printf("num2: ");
     scanf("%d", &num2);
     // Adding the numbers
-    sum=num1+num2;
+    sum = num1 + num2;
     // Subtracting the numbers
-    difference=num1-num2;
+    difference = num1 - num2;
     // Multiplying the numbers
-    product=num1*num2;
+    product = num1 * num2;
     // Dividing the numbers
-    quotient=num1/num2;
+    quotient = num1 / num2;
     // Displaying the output
     printf("Sum of %d and %d is %d\n", num1, num2, sum);
     printf("Difference between %d and %d is %d\n", num1, num2, difference);

@@ -5,16 +5,14 @@
  */
 
 // Method to swap 2 numbers using pointers
-void swap(int *a, int *b)
-{
+void swap(int* a, int* b) {
     // Swapping a and b
-    *a=*a+*b;
-    *b=*a-*b;
-    *a=*a-*b;
+    *a = *a + *b;
+    *b = *a - *b;
+    *a = *a - *b;
 }
 
-void main()
-{
+void main() {
     // Declaring variables
     int a, b;
     // Prompting user and accepting 2 integers a and b

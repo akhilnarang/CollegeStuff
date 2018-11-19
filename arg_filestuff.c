@@ -6,10 +6,9 @@
  * The filenames are taken as command line arguments
  */
 
-void main(int argc, char *argv[])
-{
+void main(int argc, char* argv[]) {
     // Check the arguments
-    if (argc!=3) {
+    if (argc != 3) {
         printf("Exactly 2 arguments are required!\n");
         printf("Syntax :-\n\n%s <source file> <destination file>\n\n", argv[0]);
         exit(1);
@@ -20,7 +19,7 @@ void main(int argc, char *argv[])
     char c;
 
     // Opening argv[1] in read mode into file1
-    file1=fopen(argv[1], "r");
+    file1 = fopen(argv[1], "r");
 
     // Check if argv[1] exists, if the file pointer is null it dosen't, exit.
     if (file1 == NULL) {
@@ -29,8 +28,9 @@ void main(int argc, char *argv[])
     }
 
     printf("Printing data from %s!\n\n", argv[1]);
-    // Loop over all the characters in file1 (until EOF) and print to the console
-    while ((c=getc(file1))!=EOF) {
+    // Loop over all the characters in file1 (until EOF) and print to the
+    // console
+    while ((c = getc(file1)) != EOF) {
         printf("%c", c);
     }
     printf("\n");
@@ -38,20 +38,21 @@ void main(int argc, char *argv[])
     fclose(file1);
     printf("Copying data from %s to %s\n", argv[1], argv[2]);
     // Opening argv[1] in read mode into file1
-    file1=fopen(argv[1], "r");
+    file1 = fopen(argv[1], "r");
     // Opening argv[2] in write mode into file2
-    file2=fopen(argv[2], "w");
+    file2 = fopen(argv[2], "w");
     // Loop over all the characters in file1 (until EOF) and print into file2
-    while ((c=getc(file1))!=EOF) {
+    while ((c = getc(file1)) != EOF) {
         fprintf(file2, "%c", c);
     }
     printf("Copied to %s! Printing its contents now!\n", argv[2]);
     // Closing file2
     fclose(file2);
     // Opening argv[2] in read mode into file2
-    file2=fopen(argv[2], "r");
-    // Loop over all the characters in file2 (until EOF) and print to the console
-    while ((c=getc(file2))!=EOF) {
+    file2 = fopen(argv[2], "r");
+    // Loop over all the characters in file2 (until EOF) and print to the
+    // console
+    while ((c = getc(file2)) != EOF) {
         printf("%c", c);
     }
     printf("\n");
