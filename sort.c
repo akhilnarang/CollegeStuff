@@ -2,7 +2,7 @@
  * sort.c
  *
  *  Created on: 19-Nov-2018
- *      Author: mitwpu
+ *      Author: Akhil
  */
 
 #include <stdio.h>
@@ -34,7 +34,7 @@ void display(student s[], int n) {
 
 void bubble_sort(student s[], int n) {
     int i, j;
-    printf("Sorting the elements by roll number!\n");
+    printf("Sorting the elements by roll number using bubble sort!\n");
     for (i = 0; i < n - 1; i++) {
         for (j = 0; j < n - i - 1; j++) {
             if (s[j].roll > s[j + 1].roll) {
@@ -43,6 +43,39 @@ void bubble_sort(student s[], int n) {
                 s[j].roll -= s[j + 1].roll;
             }
         }
+    }
+}
+
+void selection_sort(student s[], int n) {
+    int i, j, pos;
+    printf("Sorting the elements by roll number using selection sort!\n");
+    for (i = 0; i < n - 2; i++) {
+        pos = i;
+        for (j = i + 1; j < n; j++) {
+            if (s[j].roll < s[pos].roll) {
+                pos = j;
+            }
+        }
+        if (pos != i) {
+            s[i].roll += s[pos].roll;
+            s[pos].roll = s[i].roll - s[pos].roll;
+            s[i].roll -= s[pos].roll;
+        }
+    }
+}
+
+void insertion_sort(student s[], int n) {
+    int i, key, j;
+    printf("Sorting the elements by roll number using insertion sort!\n");
+    for (i = 1; i < n; i++) {
+        key = s[i].roll;
+        j = i - 1;
+
+        while (j >= 0 && s[j].roll > key) {
+            s[j + 1].roll = s[j].roll;
+            j = j - 1;
+        }
+        s[j + 1].roll = key;
     }
 }
 
@@ -85,7 +118,8 @@ int main() {
     display(s, n);
     do {
         printf(
-            "Enter 1 for bubble sort, 2 for binary search, 3 for linear "
+            "Enter 1 for bubble sort, 2 for selection sort, 3 for insertion "
+            "sort, 4 for binary search, 5 for linear "
             "search, 0 to exit!\n");
         printf("ch: ");
         scanf("%d", &ch);
@@ -96,12 +130,22 @@ int main() {
                 display(s, n);
                 break;
             case 2:
+                selection_sort(s, n);
+                printf("Sorted elements are:\n");
+                display(s, n);
+                break;
+            case 3:
+                insertion_sort(s, n);
+                printf("Sorted elements are:\n");
+                display(s, n);
+                break;
+            case 4:
                 printf("Enter value to search for!\n");
                 printf("key: ");
                 scanf("%d", &key);
                 binary_search(s, n, key);
                 break;
-            case 3:
+            case 5:
                 printf("Enter value to search for!\n");
                 printf("key: ");
                 scanf("%d", &key);
