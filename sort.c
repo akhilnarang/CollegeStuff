@@ -5,13 +5,17 @@
  *      Author: Akhil
  */
 
-#include <stdio.h>
+#include <stdio.h>  // Header for standard input/output operations
 
+#define MAX_STUDENTS 5  // Defining size of our array
+
+// Defining a student structure consisting the details we need
 typedef struct student {
     int roll;
     char name[25];
 } student;
 
+// Function to accept n elements into our student array s
 void accept(student s[], int n) {
     int i;
     printf("Enter details of students!\n");
@@ -24,6 +28,7 @@ void accept(student s[], int n) {
     }
 }
 
+// Display n elements of our student structure s
 void display(student s[], int n) {
     int i;
     printf("Index\tName\tRoll Number\n");
@@ -32,6 +37,7 @@ void display(student s[], int n) {
     }
 }
 
+// Sort the elements with roll number using bubble sort
 void bubble_sort(student s[], int n) {
     int i, j;
     printf("Sorting the elements by roll number using bubble sort!\n");
@@ -46,6 +52,7 @@ void bubble_sort(student s[], int n) {
     }
 }
 
+// Sort the elements with roll number using selection sort
 void selection_sort(student s[], int n) {
     int i, j, pos;
     printf("Sorting the elements by roll number using selection sort!\n");
@@ -64,6 +71,7 @@ void selection_sort(student s[], int n) {
     }
 }
 
+// Sort the elements with roll number using insertion sort
 void insertion_sort(student s[], int n) {
     int i, key, j;
     printf("Sorting the elements by roll number using insertion sort!\n");
@@ -73,22 +81,35 @@ void insertion_sort(student s[], int n) {
 
         while (j >= 0 && s[j].roll > key) {
             s[j + 1].roll = s[j].roll;
-            j = j - 1;
+            j--;
         }
         s[j + 1].roll = key;
     }
 }
 
+// Search for an element in s using linear search
+void linear_search(student s[], int n, int key) {
+    for (int i = 0; i < n; i++) {
+        if (s[i].roll == key) {
+            printf("Key %d found at index %d!\n", key, i);
+            return;  // Break out the moment key is found
+        }
+    }
+    printf("Key %d not found!\n", key);
+}
+
+// Search for an element in s using binary search
 void binary_search(student s[], int n, int key) {
+    // Binary search requires sorted data
     printf("Sorting data incase it is not sorted!\n");
     bubble_sort(s, n);
     display(s, n);
     int l = 0, r = n;
-    while (l < r) {
+    while (l <= r) {
         int p = (l + r) / 2;
         if (s[p].roll == key) {
             printf("Key %d found at index %d!\n", key, p);
-            return;
+            return;  // Break out the moment key is found
         }
         if (s[p].roll > key) {
             r = p - 1;
@@ -99,30 +120,22 @@ void binary_search(student s[], int n, int key) {
     printf("Key %d not found!\n", key);
 }
 
-void linear_search(student s[], int n, int key) {
-    for (int i = 0; i < n; i++) {
-        if (s[i].roll == key) {
-            printf("Key %d found at index %d!\n", key, i);
-            return;
-        }
-    }
-    printf("Key %d not found!\n", key);
-}
-
 int main() {
-    int n, ch, key;
-    printf("Enter number of students: ");
-    scanf("%d", &n);
-    student s[n];
+    // Declare our variables for choices, key, size
+    int n = MAX_STUDENTS, ch, key;
+    student s[n];  // Define an array of student
     accept(s, n);
     display(s, n);
+    // Do while loop for user to choose action
     do {
+        // Prompt user and accept choice
         printf(
             "Enter 1 for bubble sort, 2 for selection sort, 3 for insertion "
-            "sort, 4 for binary search, 5 for linear "
+            "sort, 4 for linear search, 5 for binary "
             "search, 0 to exit!\n");
         printf("ch: ");
         scanf("%d", &ch);
+        // Check users choice using switch-case
         switch (ch) {
             case 1:
                 bubble_sort(s, n);
@@ -143,14 +156,18 @@ int main() {
                 printf("Enter value to search for!\n");
                 printf("key: ");
                 scanf("%d", &key);
-                binary_search(s, n, key);
+                linear_search(s, n, key);
                 break;
             case 5:
                 printf("Enter value to search for!\n");
                 printf("key: ");
                 scanf("%d", &key);
-                linear_search(s, n, key);
+                binary_search(s, n, key);
+                break;
+            default:
+                printf("Invalid choice!\n");
                 break;
         }
+        // Exit on 0
     } while (ch != 0);
 }
