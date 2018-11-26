@@ -89,7 +89,8 @@ void insertion_sort(student s[], int n) {
 
 // Search for an element in s using linear search
 void linear_search(student s[], int n, int key) {
-    for (int i = 0; i < n; i++) {
+    int i;
+    for (i = 0; i < n; i++) {
         if (s[i].roll == key) {
             printf("Key %d found at index %d!\n", key, i);
             return;  // Break out the moment key is found
