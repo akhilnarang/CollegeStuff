@@ -1,91 +1,69 @@
 #include <stdio.h>
 
 /**
- * Menu driven program to take in elements of a matrix in a DDA and display sum
- * and difference
+ * Menu driven program to take in elements of a matrix in a DDA 
  */
 
-void main() {
-    // Declaration of variables
-    int r, c;
-    // Prompting the user
-    printf("Enter the number of rows: ");
-    // Accepting input
-    scanf("%d", &r);
-    printf("Enter the number of columns: ");
-    scanf("%d", &c);
-    int a[r][c], b[r][c], i, j, s;
+#define row 3   
+#define column 3
 
-    // Accepting values into 2 arrays
-
+void accept(int a[row][column]) {
+    int i, j;
     printf("\nEnter elements of a:\n");
-    for (i = 0; i < r; i++) {
-        for (j = 0; j < c; j++) {
+    for (i = 0; i < row; i++) {
+        for (j = 0; j < column; j++) {
             printf("a[%d][%d]: ", i + 1, j + 1);
             scanf("%d", &a[i][j]);
         }
     }
+}
 
-    printf("\nEnter elements of b:\n");
-    for (i = 0; i < r; i++) {
-        for (j = 0; j < c; j++) {
-            printf("b[%d][%d]: ", i + 1, j + 1);
-            scanf("%d", &b[i][j]);
-        }
-    }
-
-    // Displaying elements of 2 arrays
-
+void display(int a[row][column]) {
+    int i, j;
     printf("\nElements of a are:\n");
-
-    for (i = 0; i < r; i++) {
-        for (j = 0; j < c; j++) {
+    for (i = 0; i < row; i++) {
+        for (j = 0; j < column; j++) {
             printf("a[%d][%d] - %d\t", i + 1, j + 1, a[i][j]);
         }
         printf("\n");
     }
-
-    printf("\nElements of b are:\n");
-
-    for (i = 0; i < r; i++) {
-        for (j = 0; j < c; j++) {
-            printf("b[%d][%d] - %d\t", i + 1, j + 1, b[i][j]);
-        }
-        printf("\n");
-    }
-
-    // Loop for checking input and deciding whether to exit or not
-
-    do {
-        // Prompt, accept input, and switch-case structure to check input
-        printf("\n\nEnter 1 for addition, 2 for substraction, 0 to exit: ");
-        scanf("%d", &s);
-        switch (s) {  // Printing sum or difference depending on the input
-            case 1:
-                printf("\nSum is:\n");
-                for (i = 0; i < r; i++) {
-                    for (j = 0; j < c; j++) {
-                        printf("sum[%d][%d] - %d\t", i + 1, j + 1,
-                               a[i][j] + b[i][j]);
-                    }
-                    printf("\n");
-                }
-                break;
-            case 2:
-                printf("\nDifference is:\n");
-                for (i = 0; i < r; i++) {
-                    for (j = 0; j < c; j++) {
-                        printf("difference[%d][%d] - %d\t", i + 1, j + 1,
-                               a[i][j] - b[i][j]);
-                    }
-                    printf("\n");
-                }
-                break;
-            case 0:
-                break;
-            default:
-                printf("\nWrong input!");
-        }
-        printf("\n");
-    } while (s != 0);  // Exit when the input is 0
 }
+
+void compact(int a[row][column], int c[row][3]) {
+    int i, j, count = 0;
+    for (i = 0; i < row; i++) {
+        for (j = 0; j < column; j++) {
+            if (a[i][j] != 0) {
+                count++;
+                c[count][0] = i;
+                c[count][1] = j;
+                c[count][2] = a[i][j];                
+            }
+        }
+    }
+    c[0][0] = row;
+    c[0][1] = column;
+    c[0][2] = count;
+    for (i = 0;i <= count;i++) {
+        for (j = 0;j < 3;j++) {
+            printf("c[%d][%d] - %d\t", i + 1, j + 1, c[i][j]);
+        }
+        printf("\n");
+    }    
+}
+
+void main() {
+    int a[row][column];
+    int c[(row*column)+1][3];
+
+    // Accepting values into array
+    accept(a);
+
+    // Display values from array
+    display(a);
+    
+    printf("Computing and displaying compat matrix!\n");
+    
+    // Make compact matrix
+    compact(a, c);
+ }

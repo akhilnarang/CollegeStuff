@@ -5,9 +5,9 @@
  *      Author: Akhil
  */
 
-#include <stdio.h>  // Header for standard input/output operations
+#include <stdio.h> // Header for standard input/output operations
 
-#define MAX_STUDENTS 5  // Defining size of our array
+#define MAX_STUDENTS 5 // Defining size of our array
 
 // Defining a student structure consisting the details we need
 typedef struct student {
@@ -89,11 +89,10 @@ void insertion_sort(student s[], int n) {
 
 // Search for an element in s using linear search
 void linear_search(student s[], int n, int key) {
-    int i;
-    for (i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++) {
         if (s[i].roll == key) {
             printf("Key %d found at index %d!\n", key, i);
-            return;  // Break out the moment key is found
+            return; // Break out the moment key is found
         }
     }
     printf("Key %d not found!\n", key);
@@ -110,7 +109,7 @@ void binary_search(student s[], int n, int key) {
         int p = (l + r) / 2;
         if (s[p].roll == key) {
             printf("Key %d found at index %d!\n", key, p);
-            return;  // Break out the moment key is found
+            return; // Break out the moment key is found
         }
         if (s[p].roll > key) {
             r = p - 1;
@@ -124,7 +123,7 @@ void binary_search(student s[], int n, int key) {
 int main() {
     // Declare our variables for choices, key, size
     int n = MAX_STUDENTS, ch, key;
-    student s[n];  // Define an array of student
+    student s[n]; // Define an array of student
     accept(s, n);
     display(s, n);
     // Do while loop for user to choose action
@@ -169,6 +168,61 @@ int main() {
                 printf("Invalid choice!\n");
                 break;
         }
-        // Exit on 0
+      // Exit on 0
     } while (ch != 0);
 }
+
+ /* OUTPUT
+ Enter details of students!
+Student 1
+Name: name1
+Roll Number: 5
+Student 2
+Name: name2
+Roll Number: 6
+Student 3
+Name: name3
+Roll Number: 1
+Student 4
+Name: name4
+Roll Number: 4
+Student 5
+Name: name5
+Roll Number: 3
+Index	Name	Roll Number
+0	name1	5
+1	name2	6
+2	name3	1
+3	name4	4
+4	name5	3
+Enter 1 for bubble sort, 2 for selection sort, 3 for insertion sort, 4 for binary search, 5 for linear search, 0 to exit!
+ch: 5
+Enter value to search for!
+key: 3
+Key 3 found at index 4!
+Enter 1 for bubble sort, 2 for selection sort, 3 for insertion sort, 4 for binary search, 5 for linear search, 0 to exit!
+ch: 3
+Sorting the elements by roll number using insertion sort!
+Sorted elements are:
+Index	Name	Roll Number
+0	name1	1
+1	name2	3
+2	name3	4
+3	name4	5
+4	name5	6
+Enter 1 for bubble sort, 2 for selection sort, 3 for insertion sort, 4 for binary search, 5 for linear search, 0 to exit!
+ch: 4
+Enter value to search for!
+key: 4
+Sorting data incase it is not sorted!
+Sorting the elements by roll number using bubble sort!
+Index	Name	Roll Number
+0	name1	1
+1	name2	3
+2	name3	4
+3	name4	5
+4	name5	6
+Key 4 found at index 2!
+Enter 1 for bubble sort, 2 for selection sort, 3 for insertion sort, 4 for binary search, 5 for linear search, 0 to exit!
+ch: 0
+*/
