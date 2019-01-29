@@ -169,34 +169,25 @@ void postToPre(char expression[], char stk[][50])
 {
 
 	char op1[50], op2[50];
-	char ch[2];
+	char ch[3];
 	ch[1] = '\0';
 	int n = 0;
 
 	while(expression[n] != '\0') {
-
+		ch[0] = ch[1] = ch[2] = '\0';
 		if(icp(expression[n])) {
 			ch[0] = expression[n];
 			popMultiple(stk, op2);
 			popMultiple(stk, op1);
-			strcat(ch,op1);
-			strcat(ch,op2);
+			strcat(ch, op1);
+			strcat(ch, op2);
 			pushMultiple(ch, stk);
-		}
-
-		else if(expression[n] == '(' || expression[n] == ')') {
-			
-		}
-
-		else{
+		} else {
 			ch[0] = expression[n];
 			pushMultiple(ch, stk);
 		}
-
 		n++;
-
 	}
-
 }
 
 int main() {
