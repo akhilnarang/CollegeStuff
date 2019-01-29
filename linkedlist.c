@@ -317,6 +317,4 @@ Current Address	Current Data	Next Address
 24471888	6		0
 Enter 1 to display list, 2 to add element, 3 to delete an element, 4 for length, 5 for reverse, 6 for sort, 7 for merge, 8 for erase and 0 to exit!
 ch: 0
-
-
-
+*/

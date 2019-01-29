@@ -52,7 +52,7 @@ void compact(int a[row][column], int c[row][3]) {
     }    
 }
 
-void main() {
+int main() {
     int a[row][column];
     int c[(row*column)+1][3];
 
@@ -66,4 +66,5 @@ void main() {
     
     // Make compact matrix
     compact(a, c);
+    return 0;
  }
