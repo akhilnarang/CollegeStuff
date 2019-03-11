@@ -148,30 +148,40 @@ int poly::eval_poly() {
 }
 
 int main() {
-    poly p1, p2, p3;
-    int ch;
+    poly p[10];
+    int ch, count = 0, i, m, n, result;
+
     do {
         // Display menu to user, and accept choice
         cout << "Enter 1 for creating polynomial, 2 for displaying, ";
         cout << "3 for adding, 4 for evaluating result!" << endl;
+        cout << "Number of polynomials created so far: " << count << endl;
         cout << "ch: ";
         cin >> ch;
         // Check user's choice with switch-case
         switch (ch) {
             case 1:
-                p1.create_poly();
+                p[count].create_poly();
+                count++;
                 break;
             case 2:
-                p1.display_poly();
+                for (i = 0; i < count; i++) {
+                    p[i].display_poly();
+                }
                 break;
             case 3:
-                p1.create_poly();
-                p2.create_poly();
-                p3.add_poly(p1, p2);
-                p3.display_poly();
+                cout << "Enter the number of the 2 polynomials you want to add!"
+                     << endl;
+                cin >> m >> n;
+                p[count].add_poly(p[m], p[n]);
+                p[count].display_poly();
                 break;
             case 4:
-                cout << "Answer is " << p1.eval_poly() << endl;
+                cout << "Enter number of polynomial to be evaluated!" << endl;
+                cout << "n: ";
+                cin >> n;
+                result = p[n].eval_poly();
+                cout << "Answer is " << result << endl;
                 break;
             default:
                 cout << "Invalid choice!" << endl;
