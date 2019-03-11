@@ -4,14 +4,17 @@
 
 using namespace std;
 
+// Class for each term of a polynomial
 class term {
-    int coeff, exp;
-    term* next;
-    friend class poly;
+    int coeff, exp;     // Coefficient and exponent
+    term* next;         // Next term
+    friend class poly;  // Declare class poly as a friend class, so it can
+                        // access these members
 };
 
+// Class for a polynomial
 class poly {
-    term* head;
+    term* head;  // Head term of the polynomial
 
    public:
     poly() {
@@ -26,12 +29,14 @@ class poly {
     int eval_poly();
 };
 
+// Method to create a polynomial, of class poly
 void poly::create_poly() {
     term *temp, *current = head;
     int i, n;
     cout << "Enter number of terms!" << endl;
     cout << "n: ";
     cin >> n;
+    // Accept n terms from the user
     for (i = 0; i < n; i++) {
         temp = new term;
         cout << "Enter values!" << endl;
@@ -45,6 +50,7 @@ void poly::create_poly() {
     }
 }
 
+// Method to display the terms of a polynomial
 void poly::display_poly() {
     if (head->next == head) {
         cout << "No terms!" << endl;
@@ -70,6 +76,7 @@ void poly::display_poly() {
     cout << endl;
 }
 
+// Method to add 2 polynomials, and store the result in the calling object
 void poly::add_poly(poly p1, poly p2) {
     term* temp1 = p1.head->next;
     term* temp2 = p2.head->next;
@@ -121,6 +128,7 @@ void poly::add_poly(poly p1, poly p2) {
     }
 }
 
+// Method to evaluate a polynomial based on user's input value for x
 int poly::eval_poly() {
     int x, answer = 0;
     cout << "Enter value of x!" << endl;
@@ -143,10 +151,12 @@ int main() {
     poly p1, p2, p3;
     int ch;
     do {
+        // Display menu to user, and accept choice
         cout << "Enter 1 for creating polynomial, 2 for displaying, ";
         cout << "3 for adding, 4 for evaluating result!" << endl;
         cout << "ch: ";
         cin >> ch;
+        // Check user's choice with switch-case
         switch (ch) {
             case 1:
                 p1.create_poly();
