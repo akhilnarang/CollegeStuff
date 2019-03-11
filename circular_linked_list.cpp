@@ -52,7 +52,7 @@ void poly::create_poly() {
 
 // Method to display the terms of a polynomial
 void poly::display_poly() {
-    if (head->next == head) {
+    if (head->next == NULL) {
         cout << "No terms!" << endl;
         return;
     }
@@ -135,7 +135,7 @@ int poly::eval_poly() {
     cout << "x: ";
     cin >> x;
     term* temp = head;
-    if (temp->next == temp) {
+    if (temp->next == NULL) {
         cout << "No terms!" << endl;
         exit(1);
     }
