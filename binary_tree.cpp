@@ -133,7 +133,13 @@ class tree {
         } while (ch == 'y');
     }
 
-    void inorder() { inorder(root); }
+    void inorder() {
+        if (root == NULL) {
+            cout << "Tree is empty!" << endl;
+            return;
+        }
+        inorder(root);
+    }
 
     void inorder(node* root) {
         if (root == NULL) return;
@@ -155,7 +161,13 @@ class tree {
         }
     }
 
-    void preorder() { preorder(root); }
+    void preorder() {
+        if (root == NULL) {
+            cout << "Tree is empty!" << endl;
+            return;
+        }
+        preorder(root);
+    }
 
     void preorder(node* root) {
         if (root == NULL) return;
@@ -175,7 +187,13 @@ class tree {
         }
     }
 
-    void postorder() { postorder(root); }
+    void postorder() {
+        if (root == NULL) {
+            cout << "Tree is empty!" << endl;
+            return;
+        }
+        postorder(root);
+    }
 
     void postorder(node* root) {
         if (root == NULL) return;
@@ -201,6 +219,18 @@ class tree {
             }
             temp = s.getTop()->right;
         }
+    }
+
+    void erase() {
+        erase(root);
+        root = NULL;
+    }
+
+    void erase(node* root) {
+        if (root == NULL) return;
+        erase(root->left);
+        erase(root->right);
+        delete root;
     }
 };
 
