@@ -27,13 +27,13 @@ class queue {
 
     void enqueue(node* data) {
         if (isFull()) return;
-        this->data[++rear] = data;
+        this->data[rear++] = data;
     }
 
     node* dequeue() {
         if (isEmpty()) return new node;
         node* temp = data[front++];
-        cout << temp->data << endl;
+        cout << temp->word << " - " << temp->meaning << endl;
         return temp;
     }
 
@@ -97,6 +97,7 @@ class dictionary {
         cout << root->word << " - " << root->meaning << endl;
         cout << root->left->word << " - " << root->left->meaning << endl;
         cout << root->right->word << " - " << root->right->meaning << endl;
+        cout << root->left->right->word << endl;
     }
 
     void remove() { cout << "Enter word to be removed!" << endl; }
@@ -110,11 +111,70 @@ class dictionary {
         inorder(root->right);
     }
 
-    void bft() {}
+    void bft() {
+        queue q;
+        node* temp = root;
+        q.enqueue(root);
+        while (!q.isEmpty()) {
+            temp = q.dequeue();
+            if (temp->left) q.enqueue(temp->left);
+            if (temp->right) q.enqueue(temp->right);
+        }
+    }
 
-    void mirrorImageRecursive() {}
+    void mirrorRecursive() {
+        mirrorRecursive(root);
+        bft();
+    }
 
-    void mirrorImageIterative() {}
+    void mirrorRecursive(node* root) {
+        if (root == NULL) return;
+        mirrorRecursive(root->left);
+        mirrorRecursive(root->right);
+        node* t = root->left;
+        root->left = root->right;
+        root->right = t;
+    }
+
+    void mirrorIterative() {
+        queue q;
+        node* temp = root;
+        q.enqueue(root);
+        while (!q.isEmpty()) {
+            temp = q.dequeue();
+            node* t = temp->left;
+            temp->left = temp->right;
+            temp->right = t;
+            if (temp->left) q.enqueue(temp->left);
+            if (temp->right) q.enqueue(temp->right);
+        }
+    }
+
+    void copy() {}
+
+    void search() {
+        char word[MAX];
+        cout << "Enter word to search for!" << endl;
+        cout << "word: ";
+        cin >> word;
+        search(word, root);
+    }
+
+    void search(char word[], node* root) {
+        if (root == NULL) {
+            cout << "Word \'" << word << "\' not found in dictionary!" << endl;
+            return;
+        }
+        if (strcmp(root->word, word) > 0) {
+            search(word, root->left);
+        } else if (strcmp(root->word, word) < 0) {
+            search(word, root->right);
+        } else {
+            cout << "Word found in dictionary!" << endl;
+            cout << root->word << " - " << root->meaning << endl;
+            return;
+        }
+    }
 };
 
 int main() {
@@ -125,9 +185,10 @@ int main() {
         cout << "Enter 2 to delete!" << endl;
         cout << "Enter 3 to traverse inorder!" << endl;
         cout << "Enter 4 for BFT!" << endl;
-        cout << "Enter 5 for recursive mirror image!" << endl;
-        cout << "Enter 6 for iterative mirror image!" << endl;
+        cout << "Enter 5 for recursive mirror!" << endl;
+        cout << "Enter 6 for iterative mirror!" << endl;
         cout << "Enter 7 for recursive copy!" << endl;
+        cout << "Enter 8 for search!" << endl;
         cout << "Enter 0 to exit!" << endl;
         cout << "ch: ";
         cin >> ch;
@@ -142,6 +203,25 @@ int main() {
             case 3:
                 d.inorder();
                 break;
+            case 4:
+                d.bft();
+                break;
+            case 5:
+                d.mirrorRecursive();
+                break;
+            case 6:
+                d.mirrorIterative();
+                break;
+            case 7:
+                d.copy();
+                break;
+            case 8:
+                d.search();
+                break;
+            case 0:
+                break;
+            default:
+                cout << "Learn to read!" << endl;
         }
     } while (ch != 0);
     return 0;
