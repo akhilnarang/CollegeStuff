@@ -47,60 +47,111 @@ class dictionary {
     dictionary() { root = NULL; }
 
     void create() {
+        node* current;
+        char ch;
         root = new node;
-        cout << "Enter word and meaning!" << endl;
+        cout << "Enter root word and meaning!" << endl;
         cout << "word: ";
         cin >> root->word;
         cout << "meaning: ";
         cin >> root->meaning;
-        create(root);
-    }
-
-    void create(node* root) {
-        node *temp, *current;
-        bool flag;
-        char ch;
-        int count;
         do {
-            count = 1;
-            temp = root;
-            flag = true;
             current = new node;
             cout << "Enter word and meaning!" << endl;
             cout << "word: ";
             cin >> current->word;
             cout << "meaning: ";
             cin >> current->meaning;
-            while (flag) {
-                cout << "Level: " << count << endl;
-                if (strcmp(temp->word, current->word) > 0) {
-                    if (temp->left == NULL) {
-                        temp->left = current;
-                        flag = false;
-                    } else {
-                        temp = temp->left;
-                    }
-                } else {
-                    if (temp->right == NULL) {
-                        temp->right = current;
-                        flag = false;
-                    } else {
-                        temp = temp->right;
-                    }
-                }
-                count++;
-            }
+            insert(root, current);
             cout << "Do you want to continue? If so, enter y" << endl;
             cout << "ch: ";
             cin >> ch;
         } while (ch == 'y');
-        cout << root->word << " - " << root->meaning << endl;
-        cout << root->left->word << " - " << root->left->meaning << endl;
-        cout << root->right->word << " - " << root->right->meaning << endl;
-        cout << root->left->right->word << endl;
     }
 
-    void remove() { cout << "Enter word to be removed!" << endl; }
+    void insert(node* root, node* data) {
+        if (strcmp(root->word, data->word) > 0) {
+            if (root->left != NULL) {
+                insert(root->left, data);
+            } else {
+                root->left = data;
+                return;
+            }
+        } else {
+            if (root->right != NULL) {
+                insert(root->right, data);
+            } else {
+                root->right = data;
+                return;
+            }
+        }
+    }
+
+    void remove() {
+        char word[MAX];
+        node* current = root;
+        node* parent = root;
+        cout << "Enter word to be removed!" << endl;
+        cout << "word: ";
+        cin >> word;
+        if (!strcmp(current->word, word)) {
+            node* temp = current->left;
+            current = current->right;
+            cout << "Deleting root node " << root->word << " - "
+                 << root->meaning << endl;
+            root = current;
+            while (current->left != NULL) {
+                current = current->left;
+            }
+            current->left = temp;
+        } else {
+            while (current != NULL) {
+                if (strcmp(current->word, word) > 0) {
+                    parent = current;
+                    current = current->left;
+                } else if (strcmp(current->word, word) < 0) {
+                    parent = current;
+                    current = current->right;
+                } else {
+                    if (current->left == NULL && current->right == NULL) {
+                        cout << "Deleting leaf node" << current->word << " - "
+                             << current->meaning << endl;
+                        delete current;
+                    } else if (current->left == NULL &&
+                               current->right != NULL) {
+                        cout << "Deleting node with 1 child -> "
+                             << current->word << " - " << current->meaning
+                             << endl;
+                        node* temp = current->right;
+                        current = parent;
+                        current->right = temp;
+                    } else if (current->left != NULL &&
+                               current->right == NULL) {
+                        cout << "Deleting node with 1 child -> "
+                             << current->word << " - " << current->meaning
+                             << endl;
+                        node* temp = current->left;
+                        current = parent;
+                        current->left = temp;
+                    } else if (current->left != NULL &&
+                               current->right != NULL) {
+                        cout << "Deleting node with 2 children -> "
+                             << current->word << " - " << current->meaning
+                             << endl;
+                        node* temp = current->left;
+                        node* right = current->right;
+                        current = parent;
+                        current->right = right;
+                        while (current->left != NULL) {
+                            current = current->left;
+                        }
+                        current->left = temp;
+                    }
+                    break;
+                }
+            }
+        }
+    }
 
     void inorder() { inorder(root); }
 
@@ -111,7 +162,9 @@ class dictionary {
         inorder(root->right);
     }
 
-    void bft() {
+    void bft() { bft(root); }
+
+    void bft(node* root) {
         queue q;
         node* temp = root;
         q.enqueue(root);
@@ -124,7 +177,7 @@ class dictionary {
 
     void mirrorRecursive() {
         mirrorRecursive(root);
-        bft();
+        bft(root);
     }
 
     void mirrorRecursive(node* root) {
@@ -150,7 +203,17 @@ class dictionary {
         }
     }
 
-    void copy() {}
+    void copy(dictionary* d) { this->root = copy(d->root); }
+
+    node* copy(node* root) {
+        if (root == NULL) {
+            return root;
+        }
+        node* temp = root;
+        temp->left = copy(root->left);
+        temp->right = copy(root->right);
+        return temp;
+    }
 
     void search() {
         char word[MAX];
@@ -180,6 +243,7 @@ class dictionary {
 int main() {
     int ch;
     dictionary d;
+    dictionary temp;
     do {
         cout << "Enter 1 to insert!" << endl;
         cout << "Enter 2 to delete!" << endl;
@@ -213,7 +277,8 @@ int main() {
                 d.mirrorIterative();
                 break;
             case 7:
-                d.copy();
+                temp.copy(&d);
+                temp.bft();
                 break;
             case 8:
                 d.search();
