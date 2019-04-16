@@ -201,7 +201,9 @@ int main() {
             case 4:
                 update();
                 break;
-            default: { cout << "Wrong choice!" << endl; }
+            default: {
+                cout << "Wrong choice!" << endl;
+            }
         }
     } while (ch != 0);
     return 0;
