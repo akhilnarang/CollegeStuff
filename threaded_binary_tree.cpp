@@ -105,6 +105,21 @@ class tree {
 
 int main() {
     tree t;
-    t.create();
-    t.inorder();
+    do {
+        cout << "1. Create" << endl;
+        cout << "2. Display inorder" << endl;
+        cout << "0. To exit" << endl;
+        cout << "ch: ";
+        cin >> ch;
+        switch (ch) {
+            case 1:
+                t.create();
+                break;
+            case 2:
+                t.inorder();
+                break;
+            default:
+                cout << "Wrong choice!" << endl;
+        }
+    } while (ch != 0);
 }
