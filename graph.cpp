@@ -61,7 +61,7 @@ class graph {
         for (i = 0; i < n; i++) {
             if (!strcmp(head[i]->name, name)) return i;
         }
-        cout << "name " << name << " not found!\n";
+        cout << "Name " << name << " not found in graph!\n";
         return -1;
     }
 
@@ -74,11 +74,12 @@ class graph {
 
     void create() {
         node *temp, *current;
-        int v;
+        int v, count;
         char ch;
         for (int i = 0; i < n; i++) {
             temp = head[i];
             cout << "vertex: " << head[i]->name << endl;
+            count = 0;
             do {
                 current = new node;
                 do {
@@ -86,10 +87,15 @@ class graph {
                     cout << "v: ";
                     cin >> v;
                 } while (v == i);
+                count++;
                 current->vertex = v;
                 strcpy(current->name, head[v]->name);
                 temp->next = current;
                 temp = temp->next;
+                if (count == n - 1) {
+                    cout << "Maximum number of adjacent vertices reached for node!" << endl;
+                    break;
+                }
                 cout << "Enter y to continue!\n";
                 cout << "ch: ";
                 cin >> ch;
@@ -139,12 +145,9 @@ class graph {
                 return;
             }
             if (!visited[k]) {
-                dfs(temp);
+                dfs(head[k]);
             }
-            if (temp->next != NULL) {
-                if (!visited[temp->next->vertex])
-                    temp = head[temp->next->vertex];
-            }
+            temp = temp->next;
         }
     }
 
