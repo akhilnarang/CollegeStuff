@@ -1,99 +1,99 @@
 #include <stdio.h>
 
-struct process {
-    int name;
+#define MAX 5
+
+typedef struct node {
     int at;
     int bt;
+    int name;
     int wt;
     int tat;
     int rt;
-} p[10];
+} node;
 
-void accept(int n) {
+node process[MAX];
+int n = MAX;
+
+void read() {
     int i;
     for (i = 0; i < n; i++) {
-        printf("Enter process name\n");
-        scanf("%d", &p[i].name);
-        printf("Enter arrival time\n");
-        scanf("%d", &p[i].at);
-        printf("Enter burst time\n");
-        scanf("%d", &p[i].bt);
-        p[i].rt = p[i].bt;
-        p[i].wt = 0;
-        p[i].tat = 0;
+        printf("Enter data for process %d!\n", i + 1);
+        printf("Arrival Time: ");
+        scanf("%d", &process[i].at);
+        printf("Burst Time: ");
+        scanf("%d", &process[i].bt);
+        process[i].name = i + 1;
     }
 }
 
-void display(int n) {
-    int i;
-    int ft = 0;
-    printf("\n Process \t AT \t BT \t WT \t TAT");
-    for (i = 0; i < n; i++)
-        printf("\n    P%d   \t %d \t %d \t %d \t %d \n", p[i].name, p[i].at,
-               p[i].bt, p[i].wt, p[i].tat);
-}
-
-void sort(int n) {
+void sort() {
     int i, j;
-    struct process s;
-    for (i = 0; i < n - 1; i++)
-        for (j = 0; j < n - 1 - j; j++)
-            if (p[j].at > p[j + 1].at) {
-                s = p[j];
-                p[j] = p[j + 1];
-                p[j + 1] = s;
+    for (i = 0; i < n - i - 1; i++) {
+        for (j = 0; j < i - 1; j++) {
+            if (process[i].at > process[i + 1].at) {
+                node t = process[i];
+                process[i] = process[i + 1];
+                process[i + 1] = t;
             }
+        }
+    }
 }
 
-void sjf(int n) {
-    int i, j, min, ct, min_index, total_tat = 0, total_wt = 0;
-    ct = p[0].at;
-    printf("\n      GANT CHART      \n");
-    printf("%d", ct);
+void sjf() {
+    int i, j, min, current, min_index, total_turnaround = 0, total_wait = 0;
+    current = process[0].at;
+    printf("%d", current);
     while (1) {
         min = 999;
         min_index = -1;
         i = 0;
-        while (i < n && p[i].at <= ct) {
-            if (p[i].rt != 0 && p[i].rt < min) {
-                min = p[i].rt;
+        while (i < n && process[i].at <= current) {
+            if (process[i].rt != 0 && process[i].rt < min) {
+                min = process[i].rt;
                 min_index = i;
             }
             i++;
         }
-        if (i == n && min_index == -1)
+
+        if (i == n && min_index == -1) {
             break;
-        else if (i != n && min_index == -1) {
+        } else if (i != n && min_index == -1) {
             printf("<--IDLE-->");
-            ct = p[i].at;
+            current = process[i].at;
         } else if (i == n && min_index != -1) {
             j = min_index;
-            printf("<--P%d-->", p[i].name);
-            ct += p[j].rt;
-            p[j].rt = 0;
-            p[j].tat = ct - p[j].at;
-            p[j].wt = p[j].tat - p[j].bt;
+            printf("<--P%d-->", process[i].name);
+            current += process[j].rt;
+            process[j].rt = 0;
+            process[j].tat = current - process[j].at;
+            process[j].wt = process[j].tat - process[j].bt;
         } else {
             j = min_index;
-            printf("<--P%d-->", p[j].name);
-            ct++;
-            p[j].rt--;
-            if (p[j].rt == 0) {
-                p[j].tat = ct - p[j].at;
-                p[j].wt = p[j].tat - p[j].bt;
+            printf("<--P%d-->", process[j].name);
+            current++;
+            process[j].rt--;
+            if (process[j].rt == 0) {
+                process[j].tat = current - process[j].at;
+                process[j].wt = process[j].tat - process[j].bt;
             }
         }
-        printf("%d", ct);
+        printf("%d", current);
+    }
+}
+
+void display() {
+    int i;
+    printf("Name\tat\tbt\twt\ttat\n");
+    for (i = 0; i < n; i++) {
+        node t = process[i];
+        printf("%d\t%d\t%d\t%d\t%d\n", t.name, t.at, t.bt, t.wt, t.tat);
     }
 }
 
 int main() {
-    int n;
-    printf("Enter the number of processes you want to display:");
-    scanf("%d", &n);
-    accept(n);
-    sort(n);
-    sjf(n);
-    display(n);
-    printf("\n");
+    read();
+    sort();
+    sjf();
+    display();
+    return 0;
 }
