@@ -93,7 +93,9 @@ class graph {
                 temp->next = current;
                 temp = temp->next;
                 if (count == n - 1) {
-                    cout << "Maximum number of adjacent vertices reached for node!" << endl;
+                    cout << "Maximum number of adjacent vertices reached for "
+                            "node!"
+                         << endl;
                     break;
                 }
                 cout << "Enter y to continue!\n";
