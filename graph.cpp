@@ -37,6 +37,32 @@ class stack {
     node* getTop() { return data[top]; }
 };
 
+class queue {
+    node* data[MAX];
+    int front, rear;
+
+   public:
+    queue() { front = rear = 0; }
+
+    int isEmpty() { return front == rear; }
+
+    int isFull() { return rear == MAX - 1; }
+
+    void enqueue(node* data) {
+        if (isFull()) return;
+        this->data[rear++] = data;
+    }
+
+    node* dequeue() {
+        if (isEmpty()) return new node;
+        node* temp = data[front++];
+        cout << temp->name << endl;
+        return temp;
+    }
+
+    node* getFront() { return data[front]; }
+};
+
 class graph {
     node* head[MAX];
     int n, visited[MAX];
@@ -155,16 +181,100 @@ class graph {
 
     void dfs_iterative() {
         int v;
+        stack s;
+        node* temp;
         reset();
         cout << "Enter vertex!" << endl;
         cout << "v: ";
         cin >> v;
+        temp = head[v];
+        s.push(temp);
+
+        while (!s.isEmpty()) {
+            temp = head[s.getTop()->vertex];
+            s.pop();
+
+            if (!visited[temp->vertex]) {
+                visited[temp->vertex] = 1;
+                cout << temp->name << "\t";
+            }
+
+            temp = temp->next;
+            while (temp) {
+                if (!visited[temp->vertex]) {
+                    s.push(temp);
+                }
+                temp = temp->next;
+            }
+        }
+    }
+
+    void bfs_iterative() {
+        int v;
+        queue q;
+        node* temp;
+        reset();
+        cout << "Enter vertex!" << endl;
+        cout << "v: ";
+        cin >> v;
+        temp = head[v];
+
+        q.enqueue(head[v]);
+
+        while (!q.isEmpty()) {
+            temp = head[q.getFront()->vertex];
+            q.dequeue();
+
+            if (!visited[temp->vertex]) {
+                visited[temp->vertex] = 1;
+                cout << temp->name << " \t";
+            }
+
+            temp = temp->next;
+            while (temp) {
+                if (!visited[temp->vertex]) {
+                    q.enqueue(temp);
+                }
+                temp = temp->next;
+            }
+        }
     }
 };
 
 int main() {
     graph g;
-    g.create();
-    g.display();
-    g.dfs();
+    int ch;
+    cout << "Enter 1 to create graph" << endl;
+    cout << "Enter 2 to display graph" << endl;
+    cout << "Enter 3 for recursive dfs traversal" << endl;
+    cout << "Enter 4 for iterative dfs traversal" << endl;
+    cout << "Enter 5 for iterative bfs traversal" << endl;
+    cout << "Enter 0 to exit" << endl;
+    cout << "ch :";
+    cin >> ch;
+    do {
+        switch (ch) {
+            case 1:
+                g.create();
+                break;
+            case 2:
+                g.display();
+                break;
+            case 3:
+                g.dfs();
+                break;
+            case 4:
+                g.dfs_iterative();
+                break;
+            case 5:
+                g.bfs_iterative();
+                break;
+            default:
+                cout << "Wrong choice!" << endl;
+                break;
+        }
+        cout << "Enter your choice (0 to exit)!" << endl;
+        cout << "ch: ";
+        cin >> ch;
+    } while (ch != 0);
 }
