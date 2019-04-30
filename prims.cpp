@@ -38,7 +38,7 @@ class graph {
         for (i = 0; i < MAX; i++) {
             for (j = 0; j < MAX; j++) {
                 if (i == j) {
-                    cost[i][j] = 0;
+                    cost[i][j] = INF;
                 } else {
                     cost[i][j] = INF;
                 }
@@ -140,7 +140,7 @@ class graph {
         }
         r = 0;
         mincost = 0;
-        for (i = 0; i < n; i++) {
+        for (i = 0; i < n - 1; i++) {
             min = INF;
             for (j = 0; j < n; j++) {
                 if (nearest[j] != -1 && cost[j][nearest[j]] < min) {
@@ -151,6 +151,9 @@ class graph {
             t[r][0] = k;
             t[r][1] = nearest[k];
             r++;
+            if (cost[k][nearest[k]] == INF) {
+                break;
+            }
             mincost = mincost + cost[k][nearest[k]];
             nearest[k] = -1;
             for (j = 0; j < n; j++) {
