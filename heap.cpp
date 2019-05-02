@@ -44,9 +44,12 @@ class heap {
     void insert(int index) {
         int i = index;
         student s = heap_array[index];
-        while (i > 1 && (min_max && s.marks > heap_array[i / 2].marks ||
-                         s.marks < heap_array[1 / 2].marks)) {
-            cout << "i = " << i << endl;
+        if (min_max) {
+#define OPERATOR <
+        } else {
+#define OPERATOR >
+        }
+        while (i > 1 && s.marks OPERATOR heap_array[i / 2].marks) {
             heap_array[i] = heap_array[i / 2];
             i = i / 2;
         }
