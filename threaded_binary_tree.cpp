@@ -105,6 +105,7 @@ class tree {
 
 int main() {
     tree t;
+    int ch;
     do {
         cout << "1. Create" << endl;
         cout << "2. Display inorder" << endl;
