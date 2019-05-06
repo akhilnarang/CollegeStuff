@@ -38,7 +38,7 @@ class graph {
         for (i = 0; i < MAX; i++) {
             for (j = 0; j < MAX; j++) {
                 if (i == j) {
-                    cost[i][j] = INF;
+                    cost[i][j] = 0;
                 } else {
                     cost[i][j] = INF;
                 }
