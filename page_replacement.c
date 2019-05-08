@@ -2,120 +2,114 @@
 
 #define MAX 20
 
-struct term {
-    char bit;
-    int count;
-};
-
-typedef struct term pterm;
-pterm pagetable[MAX];
-int buffer[MAX];
-
-void init(int f) {
-    int i;
-    for (i = 0; i < f; i++) buffer[i] = -1;
-    for (i = 0; i < MAX; i++) {
-        pagetable[i].bit = 'I';
-        pagetable[i].count = 0;
-    }
-}
-
-void display_buff(int f) {
-    int i = 0;
+void fifo(int f, int length, int s[MAX]) {
+    int i, j, faults = 0, temp;
+    int front = 0, rear = 0, frames[MAX];
     for (i = 0; i < f; i++) {
-        if (buffer[i] == -1)
-            printf("--\t");
-        else
-            printf("%d\t", buffer[i]);
+        frames[i] = -1;
     }
-}
 
-void fifo(int f) {
-    int pno, j = 0, front = 0, pgfault = 0, temp;
-
-    printf("\nPress -1 any time to terminate!\n\n");
-    while (1) {
-        printf("\nEnter the page no. :  ");
-        scanf("%d", &pno);
-        if (pno < 0) {
-            printf("Total no. of faults with FIFO = %d \n", pgfault);
-            return;
-        }
-
-        if (pagetable[pno].bit == 'I') {
-            if (j < f) {
-                buffer[j] = pno;
-                j++;
-            } else {
-                temp = buffer[front];
-                buffer[front] = pno;
-                pagetable[temp].bit = 'I';
-                front = (front + 1) % f;
+    for (i = 0; i < length; i++) {
+        temp = 0;
+        for (j = 0; j < f; j++) {
+            if (frames[j] == s[i]) {
+                temp = 1;
+                break;
             }
-
-            pgfault++;
-            pagetable[pno].bit = 'V';
-            display_buff(f);
-            printf(" F\n");
-        } else {
-            display_buff(f);
-            printf("\n");
         }
+        if (temp) continue;
+
+        frames[rear] = s[i];
+        rear = (rear + 1) % f;
+        for (j = 0; j < f; j++) {
+            if (frames[j] == -1) {
+                printf("--\t");
+            } else {
+                printf("%d\t", frames[j]);
+            }
+        }
+        printf("\n");
+        faults++;
     }
+
+    printf("FIFO had %d page faults!\n", faults);
 }
 
-void lru(int f) {
-    int c = 1, min, index, temp, pno, j = 0, pgfault = 0;
+void lru(int f, int length, int s[MAX]) {
+    int faults = 0, frames[MAX][2], i, j, temp;
+    for (i = 0; i < f; i++) {
+        frames[i][0] = -1;
+        frames[i][1] = 0;
+    }
 
-    printf("\nPress -1 any time to terminate!\n\n");
-    while (1) {
-        printf("\nEnter the page no. :  ");
-        scanf("%d", &pno);
-        if (pno < 0) {
-            printf("Total no. of faults with LRU = %d \n", pgfault);
-            return;
+    for (i = 0; i < length; i++) {
+        temp = 0;
+        for (j = 0; j < f; j++) {
+            if (frames[j][0] == s[i]) {
+                frames[j][1] = 0;
+                temp = 1;
+                break;
+            }
         }
-        pagetable[pno].count = c++;
-        if (pagetable[pno].bit == 'I') {
-            if (j < f) {
-                buffer[j] = pno;
-                j++;
-            } else {
-                min = 999;
-                index = -1;
-                for (j = 0; j < f; j++) {
-                    temp = buffer[j];
-                    if (pagetable[temp].count < min) {
-                        min = pagetable[temp].count;
-                        index = temp;
-                    }
+        if (temp) continue;
+        temp = 1;
+        for (j = 0; j < f; j++) {
+            if (frames[j][0] == -1) {
+                frames[j][0] = s[j];
+                frames[j][1] = 0;
+                temp = 0;
+                break;
+            }
+        }
+        if (temp) {
+            for (j = 1; j < f; j++) {
+                if (frames[j][1] > frames[temp][1]) {
+                    temp = j;
                 }
             }
-            pgfault++;
-            pagetable[pno].bit = 'V';
-            display_buff(f);
-            printf(" F\n");
-        } else {
-            display_buff(f);
-            printf("\n");
+            frames[temp][0] = s[i];
+            frames[temp][1] = 0;
         }
+
+        for (j = 0; j < length; j++) {
+            frames[j][1]++;
+        }
+        for (j = 0; j < f; j++) {
+            if (frames[j][0] == -1) {
+                printf("--\t");
+            } else {
+                printf("%d\t", frames[j][0]);
+            }
+        }
+        printf("\n");
+        faults++;
+        printf("LRU had %d page faults!\n", faults);
     }
 }
 
 int main() {
-    int nof, ch;
-    printf("\n Enter the no. of frames :  ");
-    scanf("%d", &nof);
-
-    init(nof);
-    printf("\n\n 1. FIFO\n 2. LRU\n Enter your Choice :   ");
+    int ch, frames, i, length, s[MAX];
+    printf("Enter the number of frames!\n");
+    printf("frames: ");
+    scanf("%d", &frames);
+    printf("Enter length of reference string!\n");
+    printf("length: ");
+    scanf("%d", &length);
+    for (i = 0; i < length; i++) {
+        printf("Enter page %d!\n", i + 1);
+        printf("page: ");
+        scanf("%d", &s[i]);
+    }
+    printf("Enter 1 for FIFO\n");
+    printf("Enter 2 for LRU\n");
+    printf("ch: ");
     scanf("%d", &ch);
     if (ch == 1) {
-        fifo(nof);
+        fifo(frames, length, s);
     } else if (ch == 2) {
-        lru(nof);
-    } else
-        printf("\n\n Run again and Read Properly! \n\n");
-
+        lru(frames, length, s);
+    } else {
+        printf("Invalid input!\n");
+    }
     return 0;
 }
