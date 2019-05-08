@@ -31,7 +31,6 @@ void fifo(int f, int length, int s[MAX]) {
         printf("\n");
         faults++;
     }
-
     printf("FIFO had %d page faults!\n", faults);
 }
 
@@ -45,13 +44,14 @@ void lru(int f, int length, int s[MAX]) {
     for (i = 0; i < length; i++) {
         temp = 0;
         for (j = 0; j < f; j++) {
+            // If the page is already in one of the frames
             if (frames[j][0] == s[i]) {
-                frames[j][1] = 0;
+                frames[j][1] = 0;  // Reset last referenced time
                 temp = 1;
                 break;
             }
         }
-        if (temp) continue;
+        if (temp) continue;  // No page fault here, nothing to do!
         temp = 1;
         for (j = 0; j < f; j++) {
             if (frames[j][0] == -1) {
@@ -83,8 +83,8 @@ void lru(int f, int length, int s[MAX]) {
         }
         printf("\n");
         faults++;
-        printf("LRU had %d page faults!\n", faults);
     }
+    printf("LRU had %d page faults!\n", faults);
 }
 
 int main() {
