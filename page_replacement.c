@@ -51,17 +51,21 @@ void lru(int f, int length, int s[MAX]) {
                 break;
             }
         }
+
         if (temp) continue;  // No page fault here, nothing to do!
         temp = 1;
         for (j = 0; j < f; j++) {
             if (frames[j][0] == -1) {
-                frames[j][0] = s[j];
+                frames[j][0] = s[i];
                 frames[j][1] = 0;
                 temp = 0;
                 break;
             }
         }
+
         if (temp) {
+            // If there are no empty spaces, find the LRU page
+            temp = 0;
             for (j = 1; j < f; j++) {
                 if (frames[j][1] > frames[temp][1]) {
                     temp = j;
@@ -74,6 +78,7 @@ void lru(int f, int length, int s[MAX]) {
         for (j = 0; j < length; j++) {
             frames[j][1]++;
         }
+
         for (j = 0; j < f; j++) {
             if (frames[j][0] == -1) {
                 printf("--\t");
@@ -81,6 +86,7 @@ void lru(int f, int length, int s[MAX]) {
                 printf("%d\t", frames[j][0]);
             }
         }
+
         printf("\n");
         faults++;
     }
