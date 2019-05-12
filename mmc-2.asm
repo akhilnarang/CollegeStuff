@@ -26,7 +26,7 @@ num dd 10000.0
 divisor dd 5.0
 
 section .bss
-mean1 resd 1
+mean1 resb 1
 mean2 rest 1
 
 count1 resb 1
@@ -38,16 +38,16 @@ global _start
 _start:
 ; Set counter to 5
 mov cl, 05
-; Pointer to array in esi
-mov esi, array
+; Pointer to array in rsi
+mov rsi, array
 ; Initialize stack
 finit
 ; Load zero to the top of the stack
 fldz
 sum:
 ; Add and store the sum to the top of stack
-fadd dword[esi]
-add esi, 04
+fadd dword[rsi]
+add rsi, 04
 dec cl
 jnz sum
 
@@ -61,8 +61,8 @@ fst dword[mean1]
 fmul dword[num]
 ; Copy new top of stack to mean2
 fbstp tword[mean2]
-; Create a pointer to mean2 in ebp
-mov ebp, mean2
+; Create a pointer to mean2 in rbp
+mov rbp, mean2
 
 call display
 
@@ -72,21 +72,21 @@ syscall
 
 display:
 write msg, msgLen
-add ebp, 9
+add rbp, 9
 ; For 80 bits of BCD
 mov byte[count1], 10
 above:
-cmp byte[ebp], 00
+cmp byte[rbp], 00
 je skip
 cmp byte[count1], 02
 jne print
 write dot, 1
 print:
-mov al, byte[ebp]
+mov al, byte[rbp]
 mov byte[count2], 2
 again:
 rol al, 04
-mov byte[ebp], al
+mov byte[rbp], al
 and al, 0Fh
 cmp al, 09h
 jbe down
@@ -95,11 +95,11 @@ down:
 add al, 30h
 mov byte[temp], al
 write temp, 1
-mov al, byte[ebp]
+mov al, byte[rbp]
 dec byte[count2]
 jnz again
 skip:
-dec ebp
+dec rbp
 dec byte[count1]
 jnz above
 write dot, 1
