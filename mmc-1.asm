@@ -19,6 +19,7 @@ msg db "Sorted array is: "
 msgLength equ $-msg
 newLine db 10
 comma db ", "
+exclamation db "!"
 
 section .text
 global _start
@@ -66,12 +67,17 @@ push rsi
 call proc
 ; Print result given from procedure
 print displayBuffer, 2
+mov cl, [count]
+dec cl
+jz nocomma
 print comma, 2
+nocomma:
 pop rsi
 ; Increment pointer, decrement counter, loop again if not 0
 inc rsi
 dec byte[count]
 jnz display
+print exclamation, 1
 print newLine, 1
 
 ; Exit syscall
@@ -82,9 +88,9 @@ syscall
 ; Procedure to get the value for us to display
 proc:
 mov rsi, displayBuffer
-mov rcx,4 
+mov cl, 2
 label:
-rol bx,4
+rol bx, 4
 mov al, bl
 and al, 0Fh
 cmp al, 09h
@@ -95,7 +101,7 @@ down:
 add al, 30h
 mov [rsi], al
 inc rsi
-dec rcx
+dec cl
 jnz label       
 ret
        
