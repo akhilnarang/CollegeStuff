@@ -51,7 +51,7 @@ inc r8
 inc esi
 jmp above2
 next2:
-operate 2, fname1, 000000q, 0777q
+operate 2, fname1, 0, 0777q
 mov [fd1], rax
 mov rbx, rax
 operate 0, rbx, buff, 512
