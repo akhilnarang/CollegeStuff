@@ -1,0 +1,4 @@
+for f in $(ls *.c); do
+    clang-format $f > tmp;
+    mv tmp $f;
+done
