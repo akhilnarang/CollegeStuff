@@ -1,0 +1,6 @@
+FLDZ  - It will load constant onto the stack as a 0 value.
+FADD  - Floating point addition, will load result on the stack.
+FDIV  - Get the number from stack, and divide by given divisor and save result back on stack.
+FST   - Copy the value on top of floating point register stack to another floating point register or memory variable.
+FMUL  - Pop contents from stack, perform multiplication and push result back onto the stack.
+FBSTP - Instruction will pop the extended precision real value on the top of stack, convert it to an 80 bit BCD value and store the converted result on the specified address.
