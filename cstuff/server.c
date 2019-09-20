@@ -6,32 +6,32 @@
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <unistd.h>
+
 #define MAX 80
 #define PORT 8080
-#define SA struct sockaddr
 
 // Function designed for chat between client and server.
 void func(int sockfd) {
     char buff[MAX];
     int n;
-    // infinite loop for chat
+    // Infinite loop for chat
     for (;;) {
         bzero(buff, MAX);
 
-        // read the message from client and copy it in buffer
+        // Read the message from client and copy it in buffer
         read(sockfd, buff, sizeof(buff));
-        // print buffer which contains the client contents
+        // Print buffer which contains the client contents
         printf("From client: %s\t To client : ", buff);
         bzero(buff, MAX);
         n = 0;
-        // copy server message in the buffer
+        // Copy server message in the buffer
         while ((buff[n++] = getchar()) != '\n')
             ;
 
-        // and send that buffer to client
+        // And send that buffer to client
         write(sockfd, buff, sizeof(buff));
 
-        // if msg contains "Exit" then server exit and chat ended.
+        // If msg contains "Exit" then server exit and chat ended.
         if (strncmp("exit", buff, 4) == 0) {
             printf("Server Exit...\n");
             break;
@@ -42,28 +42,28 @@ void func(int sockfd) {
 // Driver function
 int main() {
     int sockfd, connfd, len;
-    struct sockaddr_in servaddr, cli;
+    struct sockaddr_in server, cli;
 
-    // socket create and verification
+    // Socket create and verification
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
     if (sockfd == -1) {
-        printf("socket creation failed...\n");
+        printf("Socket creation failed...\n");
         exit(0);
     } else
         printf("Socket successfully created..\n");
-    bzero(&servaddr, sizeof(servaddr));
+    bzero(&server, sizeof(server));
 
-    // assign IP, PORT
-    servaddr.sin_family = AF_INET;
-    servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
-    servaddr.sin_port = htons(PORT);
+    // Assign IP ands port
+    server.sin_family = AF_INET;
+    server.sin_addr.s_addr = htonl(INADDR_ANY);
+    server.sin_port = htons(PORT);
 
     // Binding newly created socket to given IP and verification
-    if ((bind(sockfd, (SA*)&servaddr, sizeof(servaddr))) != 0) {
-        printf("socket bind failed...\n");
+    if ((bind(sockfd, (struct sockaddr*)&server, sizeof(server))) != 0) {
+        printf("Socket bind failed!\n");
         exit(0);
     } else
-        printf("Socket successfully binded..\n");
+        printf("Socket successfully bound!\n");
 
     // Now server is ready to listen and verification
     if ((listen(sockfd, 5)) != 0) {
@@ -74,12 +74,12 @@ int main() {
     len = sizeof(cli);
 
     // Accept the data packet from client and verification
-    connfd = accept(sockfd, (SA*)&cli, &len);
+    connfd = accept(sockfd, (struct sockaddr*)&cli, &len);
     if (connfd < 0) {
-        printf("server acccept failed...\n");
+        printf("Server did not acccept, or it failed!\n");
         exit(0);
     } else
-        printf("server acccept the client...\n");
+        printf("Server has acccepted the client!\n");
 
     // Function for chatting between client and server
     func(connfd);
