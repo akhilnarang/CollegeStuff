@@ -34,7 +34,6 @@ int main() {
     int sockfd, connfd;
     struct sockaddr_in server, cli;
 
-    // Socket create and varification
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
     if (sockfd == -1) {
         printf("Socket creation failed!\n");
@@ -43,21 +42,17 @@ int main() {
         printf("Socket successfully created!\n");
     bzero(&server, sizeof(server));
 
-    // Assign IP and port
     server.sin_family = AF_INET;
     server.sin_addr.s_addr = inet_addr("127.0.0.1");
     server.sin_port = htons(PORT);
 
-    // Connect the client socket to server socket
     if (connect(sockfd, (struct sockaddr*)&server, sizeof(server)) != 0) {
         printf("Connection with the server failed!\n");
         exit(0);
     } else
         printf("Connected to the server!\n");
 
-    // Function for chat
     func(sockfd);
 
-    // Close the socket
     close(sockfd);
 }
