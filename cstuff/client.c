@@ -1,5 +1,3 @@
-#include <arpa/inet.h>
-#include <netdb.h>
 #include <netinet/in.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -7,52 +5,37 @@
 #include <sys/socket.h>
 #include <unistd.h>
 
-#define MAX 80
-#define PORT 8080
-
-void func(int sockfd) {
-    char buff[MAX];
-    int n;
-    for (;;) {
-        bzero(buff, sizeof(buff));
-        printf("Enter the string: ");
-        n = 0;
-        while ((buff[n++] = getchar()) != '\n')
-            ;
-        write(sockfd, buff, sizeof(buff));
-        bzero(buff, sizeof(buff));
-        read(sockfd, buff, sizeof(buff));
-        printf("From server: %s", buff);
-        if ((strncmp(buff, "exit", 4)) == 0) {
-            printf("Client exit...\n");
-            break;
-        }
-    }
-}
+#define MAX 1024
 
 int main() {
-    int sockfd, connfd;
-    struct sockaddr_in server, cli;
+    int sockfd;
+    struct sockaddr_in server;
 
-    sockfd = socket(AF_INET, SOCK_STREAM, 0);
-    if (sockfd == -1) {
-        printf("Socket creation failed!\n");
-        exit(0);
-    } else
-        printf("Socket successfully created!\n");
-    bzero(&server, sizeof(server));
+    if ((sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
+        printf("Socket could not be created!\n");
+        exit(1);
+    }
+
+    printf("Socket created!\n");
 
     server.sin_family = AF_INET;
-    server.sin_addr.s_addr = inet_addr("127.0.0.1");
-    server.sin_port = htons(PORT);
+    server.sin_addr.s_addr = INADDR_ANY;
+    server.sin_port = htons(8000);
 
     if (connect(sockfd, (struct sockaddr*)&server, sizeof(server)) != 0) {
         printf("Connection with the server failed!\n");
-        exit(0);
-    } else
-        printf("Connected to the server!\n");
+        exit(1);
+    }
+    printf("Connected to the server!\n");
 
-    func(sockfd);
+    char* message;
 
+    printf("Enter a message!\n");
+    char buffer[MAX] = {0};
+    printf("message: ");
+    fgets(message, MAX, stdin);
+    send(sockfd, message, strlen(message), 0);
+    int value = read(sockfd, buffer, 1024);
+    printf("Received: %s\n", buffer);
     close(sockfd);
 }
