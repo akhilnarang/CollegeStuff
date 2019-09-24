@@ -11,7 +11,7 @@ int main() {
     int sockfd;
     struct sockaddr_in server;
 
-    if ((sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
+    if ((sockfd = socket(AF_INET, SOCK_DGRAM, 0)) < 0) {
         printf("Socket could not be created!\n");
         exit(1);
     }

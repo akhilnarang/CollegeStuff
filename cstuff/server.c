@@ -12,7 +12,7 @@ int main() {
     int sockfd, accept_socket, length;
     struct sockaddr_in server;
 
-    if ((sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
+    if ((sockfd = socket(AF_INET, SOCK_DGRAM, 0)) < 0) {
         printf("Socket creation failed!\n");
         exit(1);
     }
