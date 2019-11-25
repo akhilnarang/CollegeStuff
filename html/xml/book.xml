@@ -1,0 +1,7 @@
+<?xml version ="1.0"?>
+<!DOCTYPE note SYSTEM  'book.dtd'>
+<note>
+<bookid>100</bookid>
+<bookname>Harry Potter</bookname>
+<bookauthor>J K Rowling</bookauthor>
+</note>

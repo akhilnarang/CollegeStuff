@@ -1,0 +1,61 @@
+PARTS {
+    display: block
+}
+
+TITLE {
+    display: block;
+    font-family: arial;
+    color: #008000;
+    font-weight: 600;
+    font-size: 16;
+    margin-top: 12pt;
+    text-align: center;
+}
+
+PART {
+    display: block
+}
+
+PARTNAME {
+    display: block;
+    font-family: arial;
+    color: #008000;
+    font-weight: 400;
+    font-size: 14;
+    margin-top: 10pt;
+    margin-left: 10pt;
+    text-align: center;
+}
+
+MANUFACTURER {
+    display: block;
+    font-family: arial;
+    color: #600060;
+    font-weight: 400;
+    font-size: 14;
+    margin-top: 10pt;
+    margin-left: 30pt;
+    text-align: center;
+}
+
+MODEL {
+    display: block;
+    font-family: arial;
+    color: #600060;
+    font-weight: 400;
+    font-size: 14;
+    margin-top: 10pt;
+    margin-left: 30pt;
+    text-align: center;
+}
+
+COST {
+    display: block;
+    font-family: arial;
+    color: #600060;
+    font-weight: 400;
+    font-size: 14;
+    margin-top: 5pt;
+    margin-left: 30pt;
+    text-align: center;
+}

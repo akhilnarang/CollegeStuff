@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<?xml-stylesheet type = "text/css" href= "parts.css" ?>
+<PARTS>
+    <TITLE> Computer Parts </TITLE>
+    <PART>
+        <PARTNAME> Mother Board </PARTNAME>
+        <MANUFACTURER> Asus </MANUFACTURER>
+        <MODEL> P3B-F </MODEL>
+        <COST> 1230.00</COST>
+    </PART>
+    <PART>
+        <PARTNAME> TFT Monitor </PARTNAME>
+        <MANUFACTURER> LG Electronics </MANUFACTURER>
+        <MODEL> 995e </MODEL>
+        <COST> 8500.00</COST>
+    </PART>
+</PARTS>

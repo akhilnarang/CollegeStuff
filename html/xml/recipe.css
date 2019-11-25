@@ -1,0 +1,35 @@
+title {
+    font-size: very large;
+    font-weight: bold;
+    text-align: center;
+    display: block;
+}
+
+ingredients {
+    display: block;
+    margin-top: 18px;
+    margin-left: 30px;
+    font-family: verdana;
+}
+
+ing {
+    display: block;
+    margin-left: 40px;
+}
+
+amt {
+    font-style: italic;
+}
+
+directions {
+    display: block;
+    margin-top: 18px;
+    margin-left: 60px;
+}
+
+step {
+    display: block;
+    margin-top: 10px;
+    color: blue;
+    font-family: arial
+}

@@ -1,0 +1,29 @@
+h1 h3 h4 {
+    font-style:italic;
+    font-family:'Roboto Condensed', sans-serif;
+  }
+  a:link, a:visited {
+  background-color: #263238;
+  color: #18FFFF;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover, a:active {
+  background-color: #009688;
+}
+
+body {
+    background-color: #263238;
+    text-align: center;
+}
+
+#contact, #heading, #order {
+    color: #607D8B;
+}
+
+#menu {
+    color: white
+}

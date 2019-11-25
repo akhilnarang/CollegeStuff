@@ -1,0 +1,4 @@
+<!ELEMENT note (bookid, bookname, bookauthor)>
+<!ELEMENT bookid (#PCDATA)>
+<!ELEMENT bookname (#PCDATA)>
+<!ELEMENT bookauthor (#PCDATA)>

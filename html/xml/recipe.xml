@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet href= "recipe.css" type= "text/css" ?>
+
+<recipe>
+    <head>
+        <title> corriander chutney </title>
+    </head>
+    <ingredients>
+        <ing>
+            <amt>
+                <qty> 2 </qty>
+                <unit> bunches </unit>
+            </amt>
+            <item> fresh coriander </item>
+        </ing>
+        <ing>
+            <amt>
+                <qty> 1 </qty>
+            </amt>
+
+            <item> green apple </item>
+        </ing>
+        <ing>
+            <amt>
+                <qty> 2 </qty>
+            </amt>
+            <item> medium tomatoes </item>
+        </ing>
+    </ingredients>
+    <directions>
+        <step> 1. wash and prepare everything </step>
+    </directions>
+</recipe>
