@@ -31,12 +31,9 @@ for i in sorted_weights:
         amount_to_fill.append(size / curr_weight)
         break
 
-
-amount_to_fill.append(0 * (n - len(amount_to_fill)))
-
 profit = 0
 
-for i in range(n):
+for i in range(len(amount_to_fill)):
     profit = profit + amount_to_fill[i] * objects[sorted_weights[i][0]][1]
 
 print(f"Profit is {profit}")
