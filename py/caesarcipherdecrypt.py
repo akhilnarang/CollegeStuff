@@ -12,7 +12,7 @@ for letter, index in letters.items():
 
 for c in data:
     if c in ascii_lowercase:
-        print(ascii_lowercase[letters[c] - 1], end='')
+        print(ascii_lowercase[letters[c] - 1], end="")
     else:
-        print(c, end='')
+        print(c, end="")
 print()

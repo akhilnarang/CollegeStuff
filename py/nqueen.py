@@ -42,4 +42,3 @@ def solve(result):
 if __name__ == "__main__":
     res = [[0 for _ in range(n)] for _ in range(n)]
     print(*solve(res), sep="\n")
-

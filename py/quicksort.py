@@ -2,6 +2,7 @@
 
 arr = []
 
+
 def partition(low, high):
     pivot = arr[high]
     print(f"Pivot = {pivot} at index {high}")
@@ -15,7 +16,7 @@ def partition(low, high):
             print(f"Swapping arr[i={i}] {arr[i]} and arr[j={j}] {arr[j]}")
             arr[i], arr[j] = arr[j], arr[i]
     print(f"Swapping arr[i+1={i+1}] {arr[i+1]} and arr[high={high}] {arr[high]}")
-    arr[i+1], arr[high] = arr[high], arr[i+1]
+    arr[i + 1], arr[high] = arr[high], arr[i + 1]
     print(f"Returning i+1 = {i+1}")
     return i + 1
 
@@ -30,11 +31,10 @@ def quicksort(low, high):
         print(f"Sorting j+1 = {j+1} to high = {high}")
         quicksort(j + 1, high)
 
+
 for i in range(int(input("Enter size of array: "))):
     arr.append(int(input(f"Enter element {i}: ")))
 
 print(arr)
 quicksort(0, len(arr) - 1)
 print(arr)
-
-

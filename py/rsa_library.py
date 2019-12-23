@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 
-#!/usr/bin/env python3
-
 # Importing libraries
 from rsa import newkeys, encrypt, decrypt
 
