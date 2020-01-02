@@ -1,9 +1,10 @@
 <?php
-$connection = new mysqli("HOSTNAME", "USERNAME", "PASSWORD", "DATABASE");
+$ini = parse_ini_file("mysql.ini");
+$connection = new mysqli($ini["MYSQL_HOSTNAME"], $ini["MYSQL_USERNAME"], $ini["MYSQL_PASSWORD"], $ini["MYSQL_DATABASE"]);
 // Check connection
-if ($connection -> connect_errno) {
-  echo "Failed to connect to MySQL: " . $connection -> connect_error;
-  exit();
+if ($connection->connect_errno) {
+    echo "Failed to connect to MySQL: " . $connection->connect_error;
+    exit();
 }
 
 if (isset($_POST["username"])) {
@@ -40,6 +41,6 @@ while ($user = $result->fetch_assoc()) {
 }
 
 // Free result set
-$result -> free_result();
+$result->free_result();
 
-$connection -> close();
+$connection->close();
