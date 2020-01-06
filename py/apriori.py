@@ -59,9 +59,10 @@ _print("2 items")
 
 cluster2 = {}
 keys = list(cluster1.keys())
-for i in range(len(keys)):
-    for j in range(i + 1, len(keys)):
-        cluster2[keys[i].union(keys[j])] = 0
+for data in dataset:
+    for i in range(len(data)):
+        for j in range(i + 1, len(data)):
+            increment(cluster2, [data[i], data[j]])
 
 for data in dataset:
     for key in cluster2.keys():
