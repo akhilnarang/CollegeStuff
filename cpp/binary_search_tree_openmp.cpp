@@ -1,4 +1,6 @@
+#include <omp.h>
 #include <string.h>
+
 #include <iostream>
 
 // Maximum elements in our tree
@@ -101,91 +103,28 @@ class tree {
     }
 
     void bft(node* root) {
-        queue q;
-        node* temp = root;
-        q.enqueue(root);
-        while (!q.isEmpty()) {
-            temp = q.dequeue();
-            if (temp->left) q.enqueue(temp->left);
-            if (temp->right) q.enqueue(temp->right);
+#pragma omp parallel for
+        for (int i = 0; i < 4; i++) {
+            queue q;
+            node* temp = root;
+            q.enqueue(root);
+            while (!q.isEmpty()) {
+                temp = q.dequeue();
+                if (temp->value == i) {
+                    printf("Found value %d on thread %d\n", i,
+                           omp_get_thread_num());
+                }
+                if (temp->left) q.enqueue(temp->left);
+                if (temp->right) q.enqueue(temp->right);
+            }
         }
-    }
-
-    // Depth first traversal
-    void dft() {
-        if (root == NULL) {
-            cout << "Tree is empty!" << endl;
-            return;
-        }
-        dft(root);
-    }
-
-    void dft(node* root) {
-        if (root == NULL) return;
-        dft(root->left);
-        dft(root->right);
-        cout << root->value << endl;
-    }
-
-    bool dft(node* root, int value) {
-        if (root == NULL) return false;
-        dft(root->left, value);
-        dft(root->right, value);
-        cout << "root=" << root->value << endl;
-        cout << "value="<< value << endl;
-        if (root->value == value) {
-            return true;
-        }
-    }
-
-    void search() {
-        if (root == NULL) {
-            cout << "Tree is empty!" << endl;
-            return;
-        }
-        int value;
-        cout << "Enter value to search for!" << endl;
-        cout << "value: ";
-        cin >> value;
-        cout << value;
-        if (!dft(root, value)) {
-            cout << " not";
-        }
-        cout << " found in tree!" << endl;
     }
 };
 
 int main() {
     int ch;
     tree d;
-    tree temp;
-    do {
-        cout << "Enter 1 to insert!" << endl;
-        cout << "Enter 2 for BFT!" << endl;
-        cout << "Enter 3 for DFT!" << endl;
-        cout << "Enter 4 for search!" << endl;
-        cout << "Enter 0 to exit!" << endl;
-        cout << "ch: ";
-        cin >> ch;
-
-        switch (ch) {
-            case 1:
-                d.create();
-                break;
-            case 2:
-                d.bft();
-                break;
-            case 3:
-                d.dft();
-                break;
-            case 4:
-                d.search();
-                break;
-            case 0:
-                break;
-            default:
-                cout << "Learn to read!" << endl;
-        }
-    } while (ch != 0);
+    d.create();
+    d.bft();
     return 0;
 }
