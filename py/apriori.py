@@ -64,11 +64,6 @@ for data in dataset:
         for j in range(i + 1, len(data)):
             increment(cluster2, [data[i], data[j]])
 
-for data in dataset:
-    for key in cluster2.keys():
-        if key.issubset(data):
-            cluster2[key] += 1
-
 print_data(cluster2)
 
 _print("After removing values less than minimum support:")
