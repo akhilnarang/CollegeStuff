@@ -62,7 +62,8 @@ keys = list(cluster1.keys())
 for data in dataset:
     for i in range(len(data)):
         for j in range(i + 1, len(data)):
-            increment(cluster2, [data[i], data[j]])
+            if frozenset([data[i]]) in keys and frozenset([data[j]]) in keys:
+                increment(cluster2, [data[i], data[j]])
 
 print_data(cluster2)
 
@@ -75,12 +76,15 @@ print_data(cluster2)
 
 _print("3 items")
 
+
 cluster3 = {}
+keys = list(cluster2.keys())
 for data in dataset:
     for i in range(len(data)):
         for j in range(i + 1, len(data)):
             for k in range(j + 1, len(data)):
-                increment(cluster3, [data[i], data[j], data[k]])
+                if frozenset((data[i], data[j])) in keys and frozenset((data[j], data[k])) in keys and frozenset((data[i], data[k])) in keys:
+                    increment(cluster3, [data[i], data[j], data[k]])
 print_data(cluster3)
 
 _print("After removing values less than minimum support:")
