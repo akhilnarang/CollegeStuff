@@ -15,7 +15,7 @@ int main() {
     }
 
     double s = omp_get_wtime();
-    for (i = 0; i < size; i++) {
+    for (i = 0; i < size / 2; i++) {
 #pragma omp parallel for
         for (j = 0; j < size - 1; j += 2) {
             // printf("We are at i=%llu|j=%llu|thread=%d\n", i, j,
