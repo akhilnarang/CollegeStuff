@@ -28,7 +28,7 @@ void quicksort(int arr[], int low, int high) {
 #pragma omp section
         quicksort(arr, low, j - 1);
 #pragma omp section
-        quicksort(arr, low + 1, high);
+        quicksort(arr, j + 1, high);
     }
 }
 
