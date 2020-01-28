@@ -16,7 +16,7 @@ int main() {
 
     double s = omp_get_wtime();
     for (i = 0; i < size / 2; i++) {
-#pragma omp parallel for
+#pragma omp parallel for private(temp)
         for (j = 0; j < size - 1; j += 2) {
             // printf("We are at i=%llu|j=%llu|thread=%d\n", i, j,
             //        omp_get_thread_num());
@@ -26,7 +26,7 @@ int main() {
                 n[j + 1] = temp;
             }
         }
-#pragma omp parallel for
+#pragma omp parallel for private(temp)
         for (k = 1; k < size - 1; k += 2) {
             // printf("We are at i=%llu|k=%llu|thread=%d\n", i, k,
             //        omp_get_thread_num());
