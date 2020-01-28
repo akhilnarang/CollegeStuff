@@ -34,7 +34,6 @@ void quicksort(int arr[], int low, int high) {
         quicksort(arr, low + 1, high);
     }
 }
-}
 
 void displayArray(int arr[], int n) {
     for (int i = 0; i < n; i++) {
