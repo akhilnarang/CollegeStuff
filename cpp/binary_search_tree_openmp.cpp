@@ -102,6 +102,27 @@ class tree {
         bft(root);
     }
 
+    // Depth first traversal
+    void dft() {
+        if (root == NULL) {
+            cout << "Tree is empty!" << endl;
+            return;
+        }
+#pragma omp parallel for
+        for (int i = 0; i < 4; i++) {
+            dft(root, i);
+        }
+    }
+
+    void dft(node* root, int i) {
+        if (root == NULL) return;
+        dft(root->left, i);
+        dft(root->right, i);
+        if (root->value == i) {
+            printf("Found value %d on thread %d\n", i, omp_get_thread_num());
+        }
+    }
+
     void bft(node* root) {
 #pragma omp parallel for
         for (int i = 0; i < 4; i++) {
@@ -125,6 +146,6 @@ int main() {
     int ch;
     tree d;
     d.create();
-    d.bft();
+    d.dft();
     return 0;
 }
