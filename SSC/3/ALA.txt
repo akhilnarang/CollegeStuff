@@ -1,2 +1,2 @@
-&SECOND	
-
+&FIRST	&SECOND	
+&ARG1	&ARG2
