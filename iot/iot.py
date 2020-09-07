@@ -5,6 +5,7 @@ import time
 app = Flask(__name__)
 led = LED(2)
 
+
 @app.route('/', methods=["GET", "POST"])
 def main():
     if request.method == 'GET':
@@ -25,6 +26,7 @@ def main():
     else:
         pass
     return redirect(url_for('main'))
+
 
 if __name__ == '__main__':
     app.run()

@@ -83,7 +83,11 @@ for data in dataset:
     for i in range(len(data)):
         for j in range(i + 1, len(data)):
             for k in range(j + 1, len(data)):
-                if frozenset((data[i], data[j])) in keys and frozenset((data[j], data[k])) in keys and frozenset((data[i], data[k])) in keys:
+                if (
+                    frozenset((data[i], data[j])) in keys
+                    and frozenset((data[j], data[k])) in keys
+                    and frozenset((data[i], data[k])) in keys
+                ):
                     increment(cluster3, [data[i], data[j], data[k]])
 print_data(cluster3)
 
