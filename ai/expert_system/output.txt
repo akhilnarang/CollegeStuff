@@ -1,0 +1,82 @@
+Welcome to SWI-Prolog (threaded, 64 bits, version 8.2.0)
+SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software.
+Please run ?- license. for legal details.
+
+For online help and background, visit https://www.swi-prolog.org
+For built-in help, use ?- help(Topic). or ?- apropos(Word).
+
+?- go.
+Does the patient have the following symptom? headache: y.
+
+Does the patient have the following symptom? runny_nose: |: y.
+
+Does the patient have the following symptom? sneezing: |: y.
+
+Does the patient have the following symptom? sore_throat: |: y.
+
+
+The patient might have: cold
+Take care!
+true.
+
+?- ^D
+% halt
+
+--------------------------------------------------------------------------------
+
+Welcome to SWI-Prolog (threaded, 64 bits, version 8.2.0)
+SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software.
+Please run ?- license. for legal details.
+
+For online help and background, visit https://www.swi-prolog.org
+For built-in help, use ?- help(Topic). or ?- apropos(Word).
+
+?- go.
+Does the patient have the following symptom? headache: n.
+
+Does the patient have the following symptom? fever: |: y.
+
+Does the patient have the following symptom? runny_nose: |: y.
+
+Does the patient have the following symptom? rash: |: y.
+
+Does the patient have the following symptom? conjunctivitis: |: y.
+
+
+The patient might have: measles
+Take care!
+true.
+
+?- ^D
+% halt
+
+
+--------------------------------------------------------------------------------
+
+Welcome to SWI-Prolog (threaded, 64 bits, version 8.2.0)
+SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software.
+Please run ?- license. for legal details.
+
+For online help and background, visit https://www.swi-prolog.org
+For built-in help, use ?- help(Topic). or ?- apropos(Word).
+
+?- go.
+Does the patient have the following symptom? headache: y.
+
+Does the patient have the following symptom? runny_nose: |: n.
+
+Does the patient have the following symptom? fever: |: y.
+
+Does the patient have the following symptom? chills: |: n.
+
+Does the patient have the following symptom? abdominal_pain: |: y.
+
+Does the patient have the following symptom? poor_appetite: |: y.
+
+
+The patient might have: typhoid
+Take care!
+true.
+
+?- ^D
+% halt
