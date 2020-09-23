@@ -6,7 +6,9 @@ number [0-9]
 id     {letter}({letter}|{number})
 
 %%
-{id} { printf("ID detected: %s!", yytext); }
+{letter} { printf("Letter detected: %s\n", yytext); }
+{number} { printf("Digit detected: %s\n", yytext); }
+{id} { printf("ID detected: %s!\n", yytext); }
 %%
 
 int yywrap() {
