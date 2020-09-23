@@ -67,7 +67,7 @@ class Node:
             possible_positions.append(([x_blank, y_blank + 1], "Right"))
 
         # Now we can generate the child nodes by swapping blank with all possible values and then append them to a list
-        children_nodes = []
+        child_nodes = []
 
         # Loop over all possible positions
         for new_position, move in possible_positions:
@@ -81,8 +81,8 @@ class Node:
                 temp_matrix[new_position[0]][new_position[1]],
                 temp_matrix[x_blank][y_blank],
             )
-            children_nodes.append(Node(temp_matrix, self.level + 1, 0, self, move))
-        return children_nodes
+            child_nodes.append(Node(temp_matrix, self.level + 1, 0, self, move))
+        return child_nodes
 
     def find_blank(self) -> [int, int]:
         """
