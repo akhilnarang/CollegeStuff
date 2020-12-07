@@ -13,6 +13,6 @@ with open('log.csv', 'r') as log:
 
         # Extract the data
         src, dest, protocol = row
-        
+
         # Print the data
         print(f'{src} connected to {dest} over {protocol}')
