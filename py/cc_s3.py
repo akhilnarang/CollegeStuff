@@ -20,9 +20,10 @@ def list_buckets():
     response = get_client().list_buckets()
     if buckets := response.get('Buckets'):
         print(f'Found {len(buckets)} buckets!')
+        data = []
         for bucket in buckets:
-            for k, v in bucket.items():
-                print(f'{k}: {v}')
+            data.append(bucket.values())
+        print(tabulate(data, headers=bucket.keys()))
 
 
 def create_bucket():
