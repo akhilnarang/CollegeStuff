@@ -9,6 +9,9 @@ import sys
 
 
 def get_client():
+    """
+    Method to return a boto3 Session Client object for S3 service
+    """
     return Session().client(
         's3',
         aws_access_key_id=config('S3_ACCESS_KEY'),
@@ -17,6 +20,9 @@ def get_client():
 
 
 def list_buckets():
+    """
+    Method to print a list of S3 buckets we have access to
+    """
     response = get_client().list_buckets()
     if buckets := response.get('Buckets'):
         print(f'Found {len(buckets)} buckets!')
@@ -27,6 +33,9 @@ def list_buckets():
 
 
 def create_bucket():
+    """
+    Method to create an S3 bucket
+    """
     bucket_name = input('Enter the desired name for your S3 bucket: ')
     try:
         get_client().create_bucket(Bucket=bucket_name)
@@ -37,6 +46,9 @@ def create_bucket():
 
 
 def delete_bucket():
+    """
+    Method to delete an S3 bucket
+    """
     bucket_name = input('Enter the name of the S3 bucket you wish to delete: ')
     try:
         get_client().delete_bucket(
@@ -49,6 +61,9 @@ def delete_bucket():
 
 
 def list_files(bucket_name: str = None):
+    """
+    Method to list the files in an S3 bucket
+    """
     if bucket_name is None:
         bucket_name = input('Enter the name of the S3 bucket you want a listing for: ')
     try:
@@ -64,6 +79,9 @@ def list_files(bucket_name: str = None):
 
 
 def upload_file():
+    """
+    Method to upload a file to an S3 bucket
+    """
     bucket_name = input('Enter the name of the S3 bucket you to upload a file to: ')
     file_path = input(
         f'Enter the path to the file you wish to upload to {bucket_name}: '
@@ -88,6 +106,9 @@ def upload_file():
 
 
 def delete_file():
+    """
+    Method to delete a file from an S3 bucket
+    """
     bucket_name = input(
         'Enter the name of the S3 bucket you wish to delete a file from: '
     )
@@ -105,6 +126,9 @@ def delete_file():
 
 
 def download_file():
+    """
+    Method to download a file from an S3 bucket
+    """
     bucket_name = input(
         'Enter the name of the S3 bucket you wish to download a file from: '
     )
@@ -123,6 +147,7 @@ def download_file():
 
 if __name__ == '__main__':
 
+    # Prompt the user for an input
     prompt = """1 to list buckets
 2 to create a new bucket
 3 to delete an existing bucket
@@ -150,4 +175,4 @@ choice: """
         elif choice == 7:
             download_file()
     except ValueError:
-        pass
+        pass  # Don't do anything for invalid inputs so we can simply exit
