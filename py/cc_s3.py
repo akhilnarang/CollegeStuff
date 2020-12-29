@@ -90,15 +90,21 @@ def upload_file():
         print(f'{file_path} does not exist!')
         sys.exit(1)
     file_name = os.path.basename(file_path)
+    key = (
+        input(
+            f'Enter the key (filename) you wish to upload {file_path} as (default {file_name}): '
+        )
+        or file_name
+    )
     try:
         get_client().upload_file(
             Bucket=bucket_name,
             Filename=file_path,
-            Key=file_name,
+            Key=key,
             ExtraArgs={'ACL': 'public-read'},
         )
         print(
-            f'{file_name} can be downloaded from https://{bucket_name}.s3.amazonaws.com/{file_name}'
+            f'{file_name} can be downloaded from https://{bucket_name}.s3.amazonaws.com/{key}'
         )
     except Exception as e:
         print(e)
