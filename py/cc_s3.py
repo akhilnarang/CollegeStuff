@@ -30,6 +30,8 @@ def list_buckets():
         for bucket in buckets:
             data.append(bucket.values())
         print(tabulate(data, headers=bucket.keys()))
+    else:
+        print('No buckets found!')
 
 
 def create_bucket():
@@ -73,6 +75,8 @@ def list_files(bucket_name: str = None):
             for file in files:
                 data.append(file.values())
             print(tabulate(data, headers=file.keys()))
+        else:
+            print(f'No files found in {bucket_name}!')
     except Exception as e:
         print(e)
         sys.exit(1)
