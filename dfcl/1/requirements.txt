@@ -6,7 +6,7 @@ dateutils==0.6.7
 dill==0.3.3
 idna==2.10
 javaobj-py3==0.4.1
-Jinja2==2.11.2
+Jinja2==2.11.3
 MarkupSafe==1.1.1
 multiprocess==0.70.11.1
 pathlib==1.0.1
