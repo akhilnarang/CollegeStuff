@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from typing import Any, Union
+from typing import Any, Dict, Union
 
 from flask_sqlalchemy import SQLAlchemy
 
@@ -75,7 +75,7 @@ class Marks(db.Model):
 
     student = db.relationship("Student", back_populates="marks")
 
-    def to_dict(self, exclude_relations: bool = False) -> dict[str, Any]:
+    def to_dict(self, exclude_relations: bool = False) -> Dict[str, Any]:
         """
         Convert Model object to Dict
         :param exclude_relations: whether to include relation object dicts
@@ -99,7 +99,7 @@ class Student(db.Model):
 
     marks = db.relationship("Marks", back_populates="student", uselist=False)
 
-    def to_dict(self, exclude_relations: bool = False) -> dict[str, Any]:
+    def to_dict(self, exclude_relations: bool = False) -> Dict[str, Any]:
         """
         Convert Model object to Dict
         :param exclude_relations: whether to include relation object dicts
