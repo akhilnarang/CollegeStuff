@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>TFE Flask Assignment</title>
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="{{ url_for(endpoint='static', filename='css/base.css') }}">
+
+    {% block head %}{% endblock %}
+</head>
+<body>
+<div class="w3-container content">
+    {% block body %}
+    {% endblock %}
+</div>
+</body>
+</html>
