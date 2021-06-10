@@ -1,94 +1,91 @@
-from flask import Flask, Response, jsonify, request, render_template
+#!/usr/bin/env python3
+
+from typing import Any, Union
 
 from flask_sqlalchemy import SQLAlchemy
-from typing import Any, Union
-from traceback import print_exc
+
+from flask import Flask, Response, redirect, render_template, request, url_for
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:////assignment.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///assignment.db"
 
 db = SQLAlchemy(app)
 
 
 @app.get("/")
-def hello_world() -> str:
+def root_path() -> str:
     return render_template("base.html")
 
 
 @app.post("/students")
 def create_student() -> Response:
-    """
-    Create a new Student Object
-    :return: Created Student Object
-    """
-    try:
-        student = Student(name=request.form["name"], email=request.form["email"])
-        db.session.add(student)
-        db.session.commit()
-        return jsonify(student.to_dict())
-    except Exception as e:
-        print_exc(e)
-        return jsonify({"error": str(e)})
+    student = Student(name=request.form["name"], email=request.form["email"])
+    db.session.add(student)
+    db.session.commit()
+    return redirect("students")
 
 
 @app.get("/students")
-def get_all_students() -> Union[str, Response]:
+def get_students() -> Union[str, Response]:
     """
     Get all students
     :return: Return HTML template displaying all students in a table
     """
-    try:
-        return render_template(
-            "students.html",
-            students=[student.to_dict() for student in Student.query.all()],
-        )
-    except Exception as e:
-        print_exc(e)
-        return jsonify({"error": str(e)})
+    return render_template(
+        "students.html",
+        students=[student.to_dict() for student in Student.query.all()],
+    )
+
+
+@app.get("/marks")
+def get_marks() -> Union[str, Response]:
+    """
+    Get all marks for a student
+    :return: Return HTML template displaying all marks of a student in a table
+    """
+    studentid_ = request.args.get("id")
+    marks = Marks.query.get(studentid_)
+    return render_template("marks.html", marks=marks, id=studentid_)
 
 
 @app.post("/marks")
 def create_marks() -> Response:
-    """
-    Create a new Marks Object
-    :return: Created Marks Object
-    """
-    try:
-        marks = Marks(
-            _id=request.form["id"],
-            physics=int(request.form["physics"]),
-            chemistry=int(request.form["chemistry"]),
-            maths=int(request.form["maths"]),
-        )
+    marks = Marks.query.get(request.form["id"])
+    if marks is None:
+        marks = Marks(id_=request.form["id"])
+        for subject in ["oop", "ds", "dbms"]:
+            if request.form[subject]:
+                setattr(marks, subject, int(request.form[subject]))
         db.session.add(marks)
-        db.session.commit()
-        return jsonify(marks.to_dict())
-    except Exception as e:
-        print_exc(e)
-        return jsonify({"error": str(e)})
+    else:
+        for subject in ["oop", "ds", "dbms"]:
+            if request.form[subject] and request.form[subject] != str(
+                getattr(marks, subject)
+            ):
+                setattr(marks, subject, int(request.form[subject]))
+    db.session.commit()
+    return redirect(url_for("get_marks", id=request.form["id"]))
 
 
 class Marks(db.Model):
-    __tablename__ = "marks"
-
-    _id = db.Column(db.Integer, db.ForeignKey("students._id"), primary_key=True)
-    physics = db.Column(db.Integer)
-    chemistry = db.Column(db.Integer)
-    maths = db.Column(db.Integer)
+    id_ = db.Column(db.Integer, db.ForeignKey("student.id_"), primary_key=True)
+    oop = db.Column(db.Integer)
+    ds = db.Column(db.Integer)
+    dbms = db.Column(db.Integer)
 
     student = db.relationship("Student", back_populates="marks")
 
     def to_dict(self, exclude_relations: bool = False) -> dict[str, Any]:
         """
         Convert Model object to Dict
-        :param exclude_relations: whether relation object dicts should be included or not
+        :param exclude_relations: whether to include relation object dicts
         :return: dict with model and relations data
         """
         obj = {
-            "id": self._id,
-            "physics": self.physics,
-            "chemistry": self.chemistry,
-            "maths": self.maths,
+            "id": self.id_,
+            "oop": self.oop,
+            "ds": self.ds,
+            "dbms": self.dbms,
         }
         if not exclude_relations and self.student:
             obj["student"] = self.student.to_dict(exclude_relations=True)
@@ -96,9 +93,7 @@ class Marks(db.Model):
 
 
 class Student(db.Model):
-    __tablename__ = "students"
-
-    _id = db.Column(db.Integer, primary_key=True)
+    id_ = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
     email = db.Column(db.String(50))
 
@@ -107,10 +102,15 @@ class Student(db.Model):
     def to_dict(self, exclude_relations: bool = False) -> dict[str, Any]:
         """
         Convert Model object to Dict
-        :param exclude_relations: whether relation object dicts should be included or not
+        :param exclude_relations: whether to include relation object dicts
         :return: dict with model and relations data
         """
-        obj = {"id": self._id, "name": self.name, "email": self.email}
+        obj = {"id": self.id_, "name": self.name, "email": self.email}
         if not exclude_relations and self.marks:
             obj["marks"] = self.marks.to_dict(exclude_relations=True)
         return obj
+
+
+if __name__ == "__main__":
+    db.create_all()
+    app.run()

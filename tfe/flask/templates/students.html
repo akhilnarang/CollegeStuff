@@ -1,24 +1,48 @@
 {% extends "base.html" %}
 
 {% block body %}
+    <div class="w3-container w3-padding w30margin" style="width: 100%">
+        <button class="w3-btn w3-round-large w3-border w3-border-blue w3-hover-blue w3-right w3-margin"
+                onclick="document.getElementById('addstudent').style.display='block'">
+            Add student
+        </button>
+    </div>
     <table class="w3-table-all w3-centered w3-hoverable">
         <tr class="w3-blue w3-text-white">
             <th>ID</th>
             <th>Name</th>
             <th>Email</th>
-            <th>Phyiscs</th>
-            <th>Chemistry</th>
-            <th>Maths</th>
+            <th></th>
         </tr>
         {% for student in students %}
             <tr>
                 <td>{{ student.id|safe }}</td>
                 <td>{{ student.name|safe }}</td>
                 <td>{{ student.email|safe }}</td>
-                <td>{{ student.marks.physics|safe if student.marks else "-" }}</td>
-                <td>{{ student.marks.chemistry|safe if student.marks else "-" }}</td>
-                <td>{{ student.marks.maths|safe if student.marks else "-" }}</td>
+                <td><a href="{{ url_for("get_marks", id=student.id) }}">Check Marks</a></td>
             </tr>
         {% endfor %}
     </table>
+    <div id="addstudent" class="w3-modal">
+        <div class="w3-modal-content w3-animate-zoom">
+            <header class="w3-container w3-blue w3-center">
+                <span onclick="document.getElementById('addstudent').style.display='none'"
+                      class="w3-button w3-display-topright">&times;</span>
+                <h2>Add Student</h2>
+            </header>
+            <div class="w3-container w3-padding">
+                <form action="/students" method="post">
+                    <div>
+                        <label for="addstudent-name">Name</label>
+                        <input class="w3-input" id="addstudent-name" name="name" type="text"/>
+                    </div>
+                    <div>
+                        <label for="addstudent-email">Email</label>
+                        <input class="w3-input" id="addstudent-email" name="email" type="email"/>
+                    </div>
+                    <button type="submit" class="w3-button w3-round w3-blue">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
 {% endblock %}
