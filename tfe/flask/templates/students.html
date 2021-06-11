@@ -2,13 +2,13 @@
 
 {% block body %}
     <div class="w3-container w3-padding w30margin" style="width: 100%">
-        <button class="w3-btn w3-round-large w3-border w3-border-red w3-hover-red w3-right w3-margin"
+        <button class="w3-btn w3-round-large w3-border w3-border-teal w3-hover-teal w3-right w3-margin"
                 onclick="document.getElementById('addStudentModal').style.display='block'">
             Add student data
         </button>
     </div>
-    <table class="w3-table-all w3-centered w3-hoverable">
-        <tr class="w3-red w3-text-white">
+    <table class="w3-table-all w3-centeteal w3-hoverable">
+        <tr class="w3-teal w3-text-white">
             <th>ID</th>
             <th>Name</th>
             <th>Email</th>
@@ -25,7 +25,7 @@
     </table>
     <div id="addStudentModal" class="w3-modal">
         <div class="w3-modal-content w3-animate-zoom">
-            <header class="w3-container w3-red w3-center">
+            <header class="w3-container w3-teal w3-center">
                 <span onclick="document.getElementById('addstudent').style.display='none'"
                       class="w3-button w3-display-topright">&times;</span>
                 <h2>Add Student</h2>
@@ -40,7 +40,7 @@
                         <label for="addstudent-email">Email</label>
                         <input class="w3-input" id="addstudent-email" name="email" type="email"/>
                     </div>
-                    <button type="submit" class="w3-button w3-round w3-red">Submit</button>
+                    <button type="submit" class="w3-button w3-round w3-teal">Submit</button>
                 </form>
             </div>
         </div>
