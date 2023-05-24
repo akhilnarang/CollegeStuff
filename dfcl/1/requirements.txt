@@ -13,7 +13,7 @@ pathlib==1.0.1
 pycryptodomex==3.9.7
 python-dateutil==2.8.0
 pytz==2020.4
-requests==2.23.0
+requests==2.31.0
 six==1.15.0
 urllib3==1.26.5
 wrapt==1.12.1
