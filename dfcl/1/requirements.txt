@@ -1,6 +1,6 @@
 andriller==3.5.2
 appdirs==1.4.4
-certifi==2023.7.22
+certifi==2024.7.4
 chardet==3.0.4
 dateutils==0.6.7
 dill==0.3.3
